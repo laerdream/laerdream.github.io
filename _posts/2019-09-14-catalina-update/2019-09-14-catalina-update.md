@@ -17,7 +17,7 @@ Xcode 11이 macOS Catalina 버전을 요구하고 있음을 알게되었다.
 [/_posts/2019-09-14-catalina-update/images/0914image01.png](/_posts/2019-09-14-catalina-update/images/0914image01.png)
 
 [/images/0914image01.png](./images/0914image01.png)
-
+[https://laerdream.github.io](https://laerdream.github.io/images/0914image01.png)
 
 # 설치페이지 다운로드
 
