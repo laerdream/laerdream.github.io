@@ -14,10 +14,14 @@ Xcode 11이 macOS Catalina 버전을 요구하고 있음을 알게되었다.
 
 따라서 OS업데이트를 선행하였고 베타버전 엑스코드의 설치를 진행하였다.
 
-[/_posts/2019-09-14-catalina-update/images/0914image01.png](/_posts/2019-09-14-catalina-update/images/0914image01.png)
+![/_posts/2019-09-14-catalina-update/images/0914image01.png](/_posts/2019-09-14-catalina-update/images/0914image01.png)
 
-[/images/0914image01.png](./images/0914image01.png)
-[https://laerdream.github.io](https://laerdream.github.io/images/0914image01.png)
+![/images/0914image01.png](./images/0914image01.png)
+![https://laerdream.github.io](https://laerdream.github.io/images/0914image01.png)
+
+![https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image01.png](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image01.png)
+
+![https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image01.png](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image01.png)
 
 # 설치페이지 다운로드
 
