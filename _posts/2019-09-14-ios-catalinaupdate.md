@@ -2,7 +2,7 @@
 layout: post
 title:  "OSX Catalina Beta 업데이트"
 date:   2019-09-14 03:40:00 +0900
-categories: article OSX
+categories: article ios
 ---
 
 # 설치준비
