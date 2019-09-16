@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "미역국 도전기"
+title:  "결혼 후 아내의 첫 생일 미역국 도전기"
 date:   2019-09-15 03:40:00 +0900
 categories: article cook
 ---

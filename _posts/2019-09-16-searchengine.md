@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "검색엔진 등록"
+title:  "네이버 다음 구글 검색엔진 등록하기"
 date:   2019-09-16 11:40:00 +0900
 categories: article web
 ---
