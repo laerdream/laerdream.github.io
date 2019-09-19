@@ -3,6 +3,7 @@ layout: post
 title:  "네이버 다음 구글 검색엔진 등록하기"
 date:   2019-09-16 11:40:00 +0900
 categories: article web
+cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-16/20190916_search_engine_07.jpg
 ---
 
 ## 검색 엔진 등록
