@@ -27,10 +27,13 @@ url: "https://laerdream.github.io"
 twitter_username: laerdream
 github_username:  laerdream
 
+google_analytics: UA-148351860-1
+
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
