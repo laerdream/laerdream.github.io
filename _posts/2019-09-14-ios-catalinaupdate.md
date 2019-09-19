@@ -5,7 +5,7 @@ date:   2019-09-14 03:40:00 +0900
 categories: article ios
 ---
 
-# 설치준비
+## 설치준비
 SwiftUI를 조금 더 빨리 접해보고 싶어서 베타버전인 Xcode 11을 설치하기로 하였습니다.
 
 계정에 로그인 하고 [애플개발자다운로드 페이지](https://developer.apple.com/download/)를 살펴보았는데 
@@ -17,7 +17,7 @@ Xcode 11이 macOS Catalina 버전을 요구하고 있음을 알게되었습니�
 ![카탈리나 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image01.png)
 ![엑스코드 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image02.png)
 
-# 설치시작
+## 설치시작
 
 `상당한 시간을 요구하므로 여유있는 시간에 진행하기를 권합니다` 
 
@@ -33,7 +33,7 @@ OS업데이트 시간은 약 20분 정도 소요되었던 것 같습니다.
 ![카탈리나 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image04.png)
 ![카탈리나 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image05.png)
 
-# 베타버전 엑스코드 구동
+## 베타버전 엑스코드 구동
 
 설치를 모두 마치면 BETA라는 라벨이 붙은 새로운 Xcode 응용프로그램이 생성되어있습니다.
 
@@ -43,7 +43,7 @@ OS업데이트 시간은 약 20분 정도 소요되었던 것 같습니다.
 ![카탈리나 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image07.png)
 ![카탈리나 다운로드 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image08.png)
 
-# 완료
+## 완료
 
 SwiftUI를 선택하고 테스트 프로젝트를 생성해보았습니다.
 
