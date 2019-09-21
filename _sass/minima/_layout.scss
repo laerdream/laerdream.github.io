@@ -207,16 +207,30 @@
 
   > li {
     margin-bottom: $spacing-unit;
+    // border: 1px solid #000;
+    // border-radius: 10px;
+    // padding: 10px;
+    background-color: #FFF;
+    .post-cover {
+      width: 40px;
+      height: 40px;
+      border-radius: 15px;
+      border : 1px solid #333;    
+      background-size: cover;
+      background-position: center;
+      float: left;
+      margin: 15px 15px 0px 0px;      
+    }
+
+    h3 {
+      color: #333;
+      font-weight: 600;
+      font-size: 16px;
+    }
   }
 }
 
-.post-cover {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  background-size: cover;
-  background-position: center;
-}
+
 
 .post-meta {
   font-size: $small-font-size;
@@ -302,5 +316,42 @@
   .one-half {
     width: -webkit-calc(50% - (#{$spacing-unit} / 2));
     width:         calc(50% - (#{$spacing-unit} / 2));
+  }
+}
+
+
+
+
+
+
+
+
+#aside {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100vh;
+  background-color: #111;
+  background-image: url('../../assets/imgs/asidebg.jpg');
+  background-position: top left;
+  color: #FFF;
+  h1 {
+    font-size: 16px;
+    margin: 30px;
+  }
+  ul {
+    list-style: none;
+    li {
+      font-size: 14px;
+      margin: 10px 0px;
+      color: #8decb8;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  #aside {
+      display: block;
   }
 }
