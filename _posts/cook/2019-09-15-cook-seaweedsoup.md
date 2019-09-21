@@ -3,7 +3,7 @@ layout: post
 title:  "소고기미역국 도전기"
 date:   2019-09-15 03:40:00 +0900
 categories: article cook
-cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_10.jpg
+cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_0.jpg
 ---
 
 ## 도전
