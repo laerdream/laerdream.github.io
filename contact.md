@@ -1,7 +1,7 @@
 ---
 layout: post
-title: aaa
-permalink: /1234/
+title: Contact
+permalink: /contact/
 ---
 
 hi
