@@ -1,9 +1,10 @@
 ---
-layout: post
-title:  "소고기미역국 도전기"
-date:   2019-09-15 03:40:00 +0900
-categories: article cook
-cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_0.jpg
+layout     : post
+title      : "소고기미역국 도전기"
+date       : 2019-09-15 03:40:00 +0900
+categories : article cook
+cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_0.jpg
+tags       : [요리,미역국]
 ---
 
 ## 도전

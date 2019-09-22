@@ -1,9 +1,10 @@
 ---
-layout: post
-title:  "Jekyll Theme 바꿔보기"
-date:   2019-09-19 11:23:00 +0900
-categories: article jekyll
-cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-19/2019-09-19-jekyll1.png
+layout     : post
+title      : "Jekyll Theme 바꿔보기"
+date       : 2019-09-19 11:23:00 +0900
+categories : article jekyll
+cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-19/2019-09-19-jekyll1.png
+tags       : [web,jekyll,blog]
 ---
 
 ## 도입

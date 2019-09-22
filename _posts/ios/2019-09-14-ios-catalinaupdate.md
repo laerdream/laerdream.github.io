@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "OSX Catalina Beta 업데이트"
-date:   2019-09-14 03:40:00 +0900
-categories: article ios
-cover : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image08.png
+layout     : post
+title      : "OSX Catalina Beta 업데이트"
+date       : 2019-09-14 03:40:00 +0900
+categories : article ios
+cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-14/0914image08.png
+tags       : [ios,osx]
 ---
+
 
 ## 설치준비
 SwiftUI를 조금 더 빨리 접해보고 싶어서 베타버전인 Xcode 11을 설치하기로 하였습니다.
