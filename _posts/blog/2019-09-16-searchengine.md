@@ -1,10 +1,10 @@
 ---
 layout     : post
-title      : "네이버 다음 구글 검색엔진 등록하기"
+title      : "검색엔진 등록하기 네이버 다음 구글"
 date       : 2019-09-16 11:40:00 +0900
-categories : article web
+categories : article blog
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-16/20190916_search_engine_07.jpg
-tags       : [web,seo]
+tags       : [web,seo,blog]
 ---
 
 

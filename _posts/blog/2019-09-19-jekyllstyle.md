@@ -2,14 +2,16 @@
 layout     : post
 title      : "Jekyll Theme 바꿔보기"
 date       : 2019-09-19 11:23:00 +0900
-categories : article jekyll
-cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-19/2019-09-19-jekyll1.png
+categories : article blog
+cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/jekyll.jpg
 tags       : [web,jekyll,blog]
 ---
 
 ## 도입
 
 직접 Jekyll 테마를 변경해보고 싶다는 생각이 들었습니다.
+
+![Jekyll Logo](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-19/2019-09-19-jekyll1.png)
 
 ## 로컬환경세팅
 
@@ -123,4 +125,3 @@ Jekyll은 꽤나 매력적입니다. 처음 설치한지 몇시간이 되지 않
 
 처음에 낯설어서 약간 거부감이 들었는데 지금은 강추합니다.
 
-![Jekyll Logo](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-19/2019-09-19-jekyll1.png)

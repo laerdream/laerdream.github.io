@@ -215,7 +215,7 @@
     float: left;
 
     .tag {
-      background-color: #9fdcce;
+      background-color: #AAA;
       font-size: 12px;
       padding: 2px 5px;
       color: #FFF;
@@ -237,8 +237,10 @@
 
     h3 {
       color: #333;
-      font-weight: 600;
-      font-size: 20px;
+      font-weight: 600;      
+      a {
+        font-size: 20px;
+      }
     }
   }
 }
@@ -372,4 +374,23 @@
 
 .disqus-footer {
   display: none !important;
+}
+
+
+
+.post-header {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+.post-content {
+  font-size: 15px;
+  h2 {
+    font-size: 26px;
+    // border-left: 3px solid #AAA;
+    // padding-left: 10px;
+    // line-height: 1em;
+    margin: 30px 0px 10px 0px;
+  }
 }
