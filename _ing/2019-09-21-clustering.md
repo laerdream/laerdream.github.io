@@ -23,3 +23,4 @@ N개의 데이터 X={x1,x,2,...,xN}에 대하여
 
 3. 시간 복잡도
 K-means clustering의 최적 해를 찾는 것은 NP-hard 문제에 속한다. 따라서, k-means clustering에서는 Lloyd 알고리즘과 같은 휴리스틱 (heuristic) 기법을 주로 이용
+
