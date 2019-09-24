@@ -28,5 +28,13 @@
 
   <script>
   $(document).ready(function(){
+    $("#aside").mouseenter(function() {
+      $("#aside").addClass('aside-active');
+      $(".content").addClass('content-blur');
+    });
+    $("#aside").mouseleave(function() {
+      $("#aside").removeClass('aside-active');
+      $(".content").removeClass('content-blur');
+    });
   })
   </script>

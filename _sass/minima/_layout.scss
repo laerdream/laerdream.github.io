@@ -347,12 +347,16 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   background-color: #111;
-  background-image: url('../../assets/imgs/asidebg.jpg');
+  background-color: rgba(80, 80, 80, 0.9);
+  
+  //background-image: url('../../assets/imgs/asidebg.jpg');
   background-position: top left;
   color: #FFF;
+  transition: 0.3s;
+  z-index: 999;
   h1 {
     font-size: 16px;
     margin: 30px;
@@ -362,7 +366,7 @@
     li {
       font-size: 14px;
       margin: 10px 0px;
-      color: #8decb8;
+      color: #FFF;
     }
   }
 }
@@ -371,6 +375,19 @@
       display: block;
   }
 }
+.aside-active {
+  width: 300px !important;
+}
+.content {
+  transition: 0.5s;
+}
+.content-blur {
+  //filter: blur(2px);
+  opacity: 0.1;
+}
+
+
+
 
 .disqus-footer {
   display: none !important;
