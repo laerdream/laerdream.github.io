@@ -1,5 +1,5 @@
 ---
 layout : category
-title : "요리하는 남자"
+title : "집 요리 도전기"
 category  : Cook
 ---
