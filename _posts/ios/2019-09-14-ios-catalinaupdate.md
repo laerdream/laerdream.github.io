@@ -1,6 +1,6 @@
 ---
 layout     : post
-title      : "OSX Catalina Beta 업데이트"
+title      : "[ OSX ] OSX Catalina Beta 업데이트"
 date       : 2019-09-14 03:40:00 +0900
 categories : article iOS
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/catalina.jpg
