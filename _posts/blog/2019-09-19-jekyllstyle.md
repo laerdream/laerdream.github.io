@@ -4,7 +4,7 @@ title      : "[ 블로그 만들기 - 1 ] Jekyll Theme 바꿔보기"
 date       : 2019-09-19 11:23:00 +0900
 categories : article Blog
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/jekyll.jpg
-tags       : [web,jekyll,Blog]
+tags       : [Web,Jekyll,Blog]
 ---
 
 ## 도입

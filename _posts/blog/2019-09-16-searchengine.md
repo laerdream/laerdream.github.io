@@ -4,7 +4,7 @@ title      : "[ 블로그 만들기 - 0 ] 검색엔진 등록하기 네이버 �
 date       : 2019-09-16 11:40:00 +0900
 categories : article Blog
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-16/20190916_search_engine_07.jpg
-tags       : [web,seo,Blog]
+tags       : [Web,Seo,Blog]
 ---
 
 

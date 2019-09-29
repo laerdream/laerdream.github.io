@@ -4,7 +4,7 @@ title      : "[ 국요리 ] 소고기미역국 도전기"
 date       : 2019-09-15 03:40:00 +0900
 categories : article Cook
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/seaweed.jpg
-tags       : [요리,미역국]
+tags       : [Cook,Korean Food]
 ---
 
 ## 도전
