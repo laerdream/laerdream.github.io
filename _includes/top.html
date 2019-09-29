@@ -1,0 +1,20 @@
+<div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        for( $i=0; $i<50; $i++) {
+            $('.meter').append('<li></li>');
+        }
+
+        $(".meter-wrap").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        })
+        $(".meter-wrap").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        })
+    })
+</script>
