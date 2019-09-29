@@ -1,20 +1,41 @@
 <div class="top">
     <div class="meter-wrap">
-        <ul class="meter"></ul>
+        <a href="{{ "/" | relative_url }}">
+            <ul class="meter"></ul>
+        </a>
     </div>
+    <div class="process"></div>
 </div>
 
 <script>
     $(document).ready(function () {
-        for( $i=0; $i<50; $i++) {
+        for( $i=0; $i<60; $i++) {
             $('.meter').append('<li></li>');
         }
-
-        $(".meter-wrap").mouseenter(function () {
+        $(".top").mouseenter(function () {
             $(".meter-wrap").addClass('meter-wrap-hover');
         })
-        $(".meter-wrap").mouseleave(function () {
+        $(".top").mouseleave(function () {
             $(".meter-wrap").removeClass('meter-wrap-hover');
         })
+
+
+
     })
+    // $(window).on('scroll',function() {
+    //     console.log('1');
+    // });
+
+    $(window).scroll(function() {
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        console.log(documentHeight);
+        console.log(scrollHeight);
+        console.log(adjustedWidth);
+
+        $(".process").css('width', adjustedWidth + '%');
+        
+    });
+
 </script>
