@@ -228,11 +228,12 @@
       height: 75px;
       border-radius: 8px;
       border: 0.5px solid #9aada3;
-      background-size: cover;
-      background-position: top center;
+      background-position: center;
+      background-size: 100%;
       float: left;
       margin: 15px 25px 0px 0px;
-      max-width: 100%
+      max-width: 100%;
+      transition: 0.3s;
     }
     h4 {
       margin-bottom: 5px;
@@ -252,7 +253,10 @@
   }
 }
 
-
+.post-cover:hover {
+  background-size: 120% !important;
+  opacity: 1 !important;
+}
 
 .post-meta {
   font-size: $small-font-size;
