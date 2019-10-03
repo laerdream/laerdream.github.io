@@ -2,9 +2,9 @@
 layout     : post
 title      : "[ Javascript ] jQuery를 사용한 페이지 Progress Bar"
 date       : 2019-09-30 02:45:00 +0900
-categories : article Javacript
+categories : article Javascript
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/jquery.jpg
-tags       : [NodeJS,Backend,Plugin]
+tags       : [Javascript, CSS Animation]
 ---
 
 
