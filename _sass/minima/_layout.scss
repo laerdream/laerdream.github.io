@@ -360,10 +360,12 @@
   left: 0px;
   width: 250px;
   height: 100vh;
-  background-color: #DDD;
-  background-color: rgba(80, 80, 80, 0.9);
-  background-color: rgb(255, 182, 0);
-  background-color: #565a6d;
+  // background-color: #DDD;
+  // background-color: rgba(80, 80, 80, 0.9);
+  // background-color: rgb(255, 182, 0);
+  // background-color: #505050;
+  background-color: rgba(30, 30, 30, 0.9);
+  
   
   //background-image: url('../../assets/imgs/asidebg.jpg');
   background-position: top left;
@@ -390,14 +392,14 @@
   }
 }
 .aside-active {
-  width: 300px !important;
+  width: 80% !important;
 }
 .content {
   transition: 0.5s;
 }
 .content-blur {
   //filter: blur(2px);
-  opacity: 0.1;
+  //opacity: 0.1;
 }
 
 
