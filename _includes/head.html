@@ -36,5 +36,16 @@
       $("#aside").removeClass('aside-active');
       $(".content").removeClass('content-blur');
     });
+
+    $(".top").mouseenter(function() {
+      $(".overlay").addClass('overlay-active');
+      $(".content").addClass('content-blur');
+    });
+    $(".top").mouseleave(function() {
+      $(".overlay").removeClass('overlay-active');
+      $(".content").removeClass('content-blur');
+    });
+
+
   })
   </script>
