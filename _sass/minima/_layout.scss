@@ -1,7 +1,7 @@
 body {
   //background-color: #5d468e;
   //background-color: #1a55a0;
-  background-color: #F7F7F7;
+  background-color: #FFF;
   color : #565a6d;
   p {
     font-size: 14px;
@@ -11,13 +11,12 @@ body {
   background-color: #FFF;
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid #EEE;
 }
 
 /**
  * Site header
  */
-.site-header {  
+.site-header {
   min-height: $spacing-unit * 1.865;
   line-height: $base-line-height * $base-font-size * 2.25;
   background-color: #EEE;
@@ -258,13 +257,13 @@ body {
     h3 {
       margin-top: 5px;
       color: #565a6d;
-      font-weight: 600;      
+      font-weight: 500;
       a {
-        font-size: 14px;
+        font-size: 16px;
         display:block;
         overflow:hidden;
         text-overflow: ellipsis;
-        white-space:nowrap;	
+        white-space:nowrap;
       }
     }
   }
@@ -382,8 +381,8 @@ body {
   // background-color: rgb(255, 182, 0);
   // background-color: #505050;
   background-color: rgba(30, 30, 30, 0.9);
-  
-  
+
+
   //background-image: url('../../assets/imgs/asidebg.jpg');
   background-position: top left;
   color: #FFF;
@@ -483,7 +482,7 @@ body {
   width: 100%;
   height: 45px;
   background-color: #FFF;
-  border-bottom: 1px solid #EEE;
+  // border-bottom: 1px solid #EEE;
 }
 
 .process {
@@ -539,11 +538,11 @@ body {
     margin: 0px;
     font-size: 14px;
   }
-  ul {  
+  ul {
     li {
       a {
-        font-size: 12px;        
-      }      
+        font-size: 12px;
+      }
     }
   }
 }
