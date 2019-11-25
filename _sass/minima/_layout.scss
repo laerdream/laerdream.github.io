@@ -428,19 +428,25 @@ body {
 
 .page-content {
   padding: 80px 0px;
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 24px;
+    margin: 50px 0px 10px 0px;
+  }
+  h3 {
+    font-size: 18px;
+  }
 
   .post-header {
     text-align: center;
     h1 {
-      font-size: 26px;
       margin-top: 20px;
     }
   }
   .post-content {
     padding: 30px;
-    h2 {
-      font-size: 20px;
-    }
   }
 }
 
@@ -452,13 +458,6 @@ body {
 
 .post-content {
   font-size: 15px;
-  h2 {
-    font-size: 26px;
-    // border-left: 3px solid #AAA;
-    // padding-left: 10px;
-    // line-height: 1em;
-    margin: 30px 0px 10px 0px;
-  }
 }
 
 
