@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Laerdream Blog
+title: 서보 블로그
 email: laerdream@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  소통 언제든지 환영해요.
+  은하수를 여행하는 개발자
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://laerdream.github.io"
 twitter_username: laerdream

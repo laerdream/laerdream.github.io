@@ -1,7 +1,7 @@
 ---
 layout     : post
 title      : "[ 국요리 ] 소고기미역국 도전기"
-date       : 2019-09-15 03:40:00 +0900
+date       : 2019-09-14 03:40:00 +0900
 categories : article Cook
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/seaweed.jpg
 tags       : [Cook,Korean Food]
@@ -32,8 +32,6 @@ tags       : [Cook,Korean Food]
 하지만 백선생님을 믿자고 다짐하면서 그대로 수행
 
 종이컵이 없어서 일반 유리컵에 담아보았습니다.
-
-![미역국 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_1.jpg)
 
 ![미역국 이미지](https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_2.jpg)
 
