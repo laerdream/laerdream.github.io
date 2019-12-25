@@ -1,8 +1,6 @@
 <div class="top">
     <div class="meter-wrap">
-        <a href="{{ "/" | relative_url }}">
-            <ul class="meter"></ul>
-        </a>
+        <ul class="meter"></ul>
     </div>
     <div class="process"></div>
 </div>
@@ -14,28 +12,39 @@
         }
         $(".top").mouseenter(function () {
             $(".meter-wrap").addClass('meter-wrap-hover');
-        })
+        });
         $(".top").mouseleave(function () {
             $(".meter-wrap").removeClass('meter-wrap-hover');
-        })
-
-
-
-    })
-    // $(window).on('scroll',function() {
-    //     console.log('1');
-    // });
+        });
+    });
 
     $(window).scroll(function() {
+        // 프로그레스 바 진행
         var documentHeight = $(".page-content").height() - 800;
         var scrollHeight = $(window).scrollTop();
         var adjustedWidth = scrollHeight / documentHeight * 100;
-        console.log(documentHeight);
-        console.log(scrollHeight);
-        console.log(adjustedWidth);
-
         $(".process").css('width', adjustedWidth + '%');
-        
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+    $(".top").click(function () {
+
+        window.location.href = '/';
+
     });
 
 </script>

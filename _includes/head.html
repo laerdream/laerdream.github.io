@@ -6,15 +6,8 @@
   <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
   <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
 
-  <meta property="og:url" content="https://laerdream.github.io" />
-  <meta property="og:title" content="Laerdream 블로그" />
-  <meta property="og:image" content="assets/imgs/ogimage.png" /> 
-  <meta property="og:description" content="변화를 두려워하지 않기" />
-  <meta property="og:type" content="article" />
-  
-
   {%- seo -%}
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
@@ -25,27 +18,3 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-
-  <script>
-  $(document).ready(function(){
-    $("#aside").mouseenter(function() {
-      $("#aside").addClass('aside-active');
-      $(".content").addClass('content-blur');
-    });
-    $("#aside").mouseleave(function() {
-      $("#aside").removeClass('aside-active');
-      $(".content").removeClass('content-blur');
-    });
-
-    $(".top").mouseenter(function() {
-      $(".overlay").addClass('overlay-active');
-      $(".content").addClass('content-blur');
-    });
-    $(".top").mouseleave(function() {
-      $(".overlay").removeClass('overlay-active');
-      $(".content").removeClass('content-blur');
-    });
-
-
-  })
-  </script>
