@@ -32,6 +32,8 @@ disqus : laerdream-github-io
 
 google_analytics: UA-148351860-1
 
+permalink: pretty
+
 # Build settings
 theme: minima
 plugins:
