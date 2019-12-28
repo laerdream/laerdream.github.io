@@ -3,9 +3,7 @@ https://github.com/toshimaru/jekyll-toc
 
 table of contents
 
-목차라는 단어를 몰라서 index 로 검색하니 예상하지 못한 조회만 발견하여서
-
-목차가 있는 다른 jekyll theme를 분석해서 찾아냈다.
+블로그 글에도 목차 페이지가 있으면 좋겠다는 생각을 했는데
 
 결론은 jekyll-toc 라는 외부 플러그인 사용하는 방식이다.
 
