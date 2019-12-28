@@ -1,5 +1,6 @@
 ---
 layout     : post
+toc        : true
 title      : "[ Javascript ] jQuery를 사용한 페이지 Progress Bar"
 date       : 2019-09-30 02:45:00 +0900
 categories : article Javascript
@@ -12,7 +13,7 @@ tags       : [Javascript, CSS Animation]
 
 페이지의 진행률을 막대형태로 표현한 구성을 의미합니다.
 
-Brunch나 Medium 등 글 작성 플랫폼에서 많이 보여지고 
+Brunch나 Medium 등 글 작성 플랫폼에서 많이 보여지고
 
 포털중에서는 다음 뉴스에도 해당 막대기를 사용한 것을 볼 수 있습니다.
 
@@ -56,7 +57,7 @@ progress 라는 이름의 div를 생성하였습니다.
 }
 ```
 
-progress 라는 요소는 기본적으로 absoulte 포지션을 사용해 
+progress 라는 요소는 기본적으로 absoulte 포지션을 사용해
 
 부모 요소인 top DIV의 하단 좌측에 위치하게 하였습니다.
 
@@ -75,7 +76,7 @@ $(window).scroll(function() {
     // 조절된 너비값
     var adjustedWidth = scrollHeight / documentHeight * 100;
 
-    $(".progress").css('width', adjustedWidth + '%');    
+    $(".progress").css('width', adjustedWidth + '%');
 });
 ```
 .height() 메소드를 사용해서 대상 문서 페이지의 높이를 가져오고

@@ -1,5 +1,6 @@
 ---
 layout     : post
+toc        : true
 title      : "[ OSX ] OSX Catalina Beta 업데이트"
 date       : 2019-09-14 03:40:00 +0900
 categories : article iOS
@@ -11,7 +12,7 @@ tags       : [Ios,Osx]
 ## 설치준비
 SwiftUI를 조금 더 빨리 접해보고 싶어서 베타버전인 Xcode 11을 설치하기로 하였습니다.
 
-계정에 로그인 하고 [애플개발자다운로드 페이지](https://developer.apple.com/download/)를 살펴보았는데 
+계정에 로그인 하고 [애플개발자다운로드 페이지](https://developer.apple.com/download/)를 살펴보았는데
 
 Xcode 11이 macOS Catalina 버전을 요구하고 있음을 알게되었습니다.
 
@@ -22,7 +23,7 @@ Xcode 11이 macOS Catalina 버전을 요구하고 있음을 알게되었습니�
 
 ## 설치시작
 
-`상당한 시간을 요구하므로 여유있는 시간에 진행하기를 권합니다` 
+`상당한 시간을 요구하므로 여유있는 시간에 진행하기를 권합니다`
 
 통신환경에 따른 시간 차이는 존재하겠지만 우선 엑스코드의 경우 약 7.5GB의 용량을 다운로드하는데 현재일기준 25분 가량이 소요되었습니다..
 

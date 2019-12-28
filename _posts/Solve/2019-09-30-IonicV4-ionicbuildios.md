@@ -1,5 +1,6 @@
 ---
 layout     : post
+toc        : true
 title      : "[ Ionic ] ios 빌드 실패 Cannot read property 'toLowerCase' of undefined"
 date       : 2019-09-30 11:40:00 +0900
 categories : article Solve
