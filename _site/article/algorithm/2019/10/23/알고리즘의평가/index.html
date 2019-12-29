@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ Algorithm ] 알고리즘의 평가 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ Algorithm ] 알고리즘의 평가" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="알고리즘의 정확성 평가" />
+<meta property="og:description" content="알고리즘의 정확성 평가" />
+<link rel="canonical" href="http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/" />
+<meta property="og:url" content="http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-10-23T01:05:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/","headline":"[ Algorithm ] 알고리즘의 평가","dateModified":"2019-10-23T01:05:00+09:00","datePublished":"2019-10-23T01:05:00+09:00","description":"알고리즘의 정확성 평가","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Algorithm ] 알고리즘의 평가" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/algorithm.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Algorithm ] 알고리즘의 평가</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-10-23T01:05:00+09:00" itemprop="datePublished">
+          Oct 23, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/algorithm.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#알고리즘의-정확성-평가">알고리즘의 정확성 평가</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#loop-invariant-를-통해-체크">Loop invariant 를 통해 체크</a></li>
+<li class="toc-entry toc-h3"><a href="#loop-invariant를-증명-세가지-성질">Loop invariant를 증명 세가지 성질</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#1-초기-조건-initialization">1) 초기 조건 (initialization)</a></li>
+<li class="toc-entry toc-h4"><a href="#2-유지-조건-maintenance">2) 유지 조건 (Maintenance)</a></li>
+<li class="toc-entry toc-h4"><a href="#3-종료-조건-termination">3) 종료 조건 (Termination)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#시간-복잡도-표기">시간 복잡도 표기</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#세타theta-표기법---tight-bound">세타(Theta) 표기법 - tight bound</a></li>
+<li class="toc-entry toc-h3"><a href="#빅-오big-oh-표기법---upper-bound">빅-오(Big-Oh) 표기법 - upper bound</a></li>
+<li class="toc-entry toc-h3"><a href="#빅-오메가big-omega-표기법---lower-bound">빅-오메가(Big-Omega) 표기법 - lower bound</a></li>
+<li class="toc-entry toc-h3"><a href="#빅오와-스몰오의-차이">빅오와 스몰오의 차이</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#알고리즘-분석-기준">알고리즘 분석 기준</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#최적-알고리즘을-찾기-위한-과정">최적 알고리즘을 찾기 위한 과정</a></li>
+</ul>
+</li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="알고리즘의-정확성-평가">알고리즘의 정확성 평가</h2>
+
+<h3 id="loop-invariant-를-통해-체크">Loop invariant 를 통해 체크</h3>
+<p>루프 중 불변의 부분을 찾는 것으로 정확도를 증명
+Loop invariant란 루프를 돌 동안 유지 되어야 하는 statement이다.</p>
+
+<h3 id="loop-invariant를-증명-세가지-성질">Loop invariant를 증명 세가지 성질</h3>
+
+<h4 id="1-초기-조건-initialization">1) 초기 조건 (initialization)</h4>
+<p>루프에 처음 들어갈때 변수의 변화 및 조건의 변화가 맞는지 판단해서, 루프에 정확하게 들어가는 지 확인</p>
+
+<h4 id="2-유지-조건-maintenance">2) 유지 조건 (Maintenance)</h4>
+<p>루프가 시작하기 전부터 다음 루프로 넘어가기 전까지 만족해야 되는 조건, 이 조건이 알고리즘의 목적에 부합하는지를 판단</p>
+
+<h4 id="3-종료-조건-termination">3) 종료 조건 (Termination)</h4>
+<p>루프가 끝났을 때, 우리는 사용가능하고 유용한 결과를 얻어야 하며, 이것이 문제해결(알고리즘의 목표)에 도움이 되는 겨로가가 나오는지 확인한다.</p>
+
+<h2 id="시간-복잡도-표기">시간 복잡도 표기</h2>
+
+<h3 id="세타theta-표기법---tight-bound">세타(Theta) 표기법 - tight bound</h3>
+<p>빅 세타는 빅 오와 빅 오메가의 공통부분, 최소와 최악의 중간이 평균적인 복잡도, 정확함</p>
+
+<h3 id="빅-오big-oh-표기법---upper-bound">빅-오(Big-Oh) 표기법 - upper bound</h3>
+<p>Worst case를 나타내기 때문에 시간복잡도를 논할 때 일반적으로 많이 사용</p>
+
+<h3 id="빅-오메가big-omega-표기법---lower-bound">빅-오메가(Big-Omega) 표기법 - lower bound</h3>
+<p>빅 오메가는 빅오와는 반대되는 개념. 대개 최선의 경우</p>
+
+<h3 id="빅오와-스몰오의-차이">빅오와 스몰오의 차이</h3>
+<p>빅오는 같은 경우를 포함하고 스몰오는 같은 경우를 포함하지 않는다.</p>
+
+<h2 id="알고리즘-분석-기준">알고리즘 분석 기준</h2>
+
+<p>정확성 : 올바른 입력에 대해 유한 시간 내에 옳은 답을 내는 것을 의미한다.</p>
+
+<p>수행량 : 알고리즘을 수행하는데 걸리는 수행 횟수를 나타내는데, 최상의 경우, 최악의 경우, 평균의 경우로 나타낼 수 있다.</p>
+
+<p>기억장소 사용량 : 알고리즘 수행 시 필요한 컴퓨터의 기억 공간의 사용량을 의미한다.</p>
+
+<p>단순성/명확성 : 알고리즘의 작성이 쉽고 간결하여 해독성이 높아야 한다는 것을 말한다.</p>
+
+<p>최적성 : 어떤 알고리즘이 최적이다 라고 하는 것은 그 알고리즘보다 더 적은 중요 연산을 수행하는 알고리즘이 없다는 것을 의미한다.</p>
+
+<h3 id="최적-알고리즘을-찾기-위한-과정">최적 알고리즘을 찾기 위한 과정</h3>
+
+<ol>
+  <li>
+    <p>고안한 알고리즘의 최악의 경우에 필요한 작업량 W(n)을 구한다.</p>
+  </li>
+  <li>
+    <p>최소 작업량 F(n) 필요를 증명</p>
+  </li>
+  <li>
+    <p>W(n) = F(n) 을 만족한다면 최적 알고리즘</p>
+  </li>
+</ol>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/';
+      this.page.identifier = 'http://localhost:4000/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/algorithm/2019/10/23/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%ED%8F%89%EA%B0%80/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

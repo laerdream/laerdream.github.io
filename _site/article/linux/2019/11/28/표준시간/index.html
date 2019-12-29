@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ Linux ] 표준시간 GMT, UTC, KST, JST | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ Linux ] 표준시간 GMT, UTC, KST, JST" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="시차 및 시간 통일의 필요성 지구를 포함한 발견된 대부분은 행성은 원형이기때문에 자전축을 기준으로 시차가 발생한다." />
+<meta property="og:description" content="시차 및 시간 통일의 필요성 지구를 포함한 발견된 대부분은 행성은 원형이기때문에 자전축을 기준으로 시차가 발생한다." />
+<link rel="canonical" href="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/" />
+<meta property="og:url" content="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-28T11:40:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/","headline":"[ Linux ] 표준시간 GMT, UTC, KST, JST","dateModified":"2019-11-28T11:40:00+09:00","datePublished":"2019-11-28T11:40:00+09:00","description":"시차 및 시간 통일의 필요성 지구를 포함한 발견된 대부분은 행성은 원형이기때문에 자전축을 기준으로 시차가 발생한다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Linux ] 표준시간 GMT, UTC, KST, JST" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/linux.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Linux ] 표준시간 GMT, UTC, KST, JST</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-11-28T11:40:00+09:00" itemprop="datePublished">
+          Nov 28, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/linux.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#시차-및-시간-통일의-필요성">시차 및 시간 통일의 필요성</a></li>
+<li class="toc-entry toc-h2"><a href="#gmt">GMT</a></li>
+<li class="toc-entry toc-h2"><a href="#utc">UTC</a></li>
+<li class="toc-entry toc-h2"><a href="#kst-jst">KST, JST</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="시차-및-시간-통일의-필요성">시차 및 시간 통일의 필요성</h2>
+<p>지구를 포함한 발견된 대부분은 행성은 원형이기때문에 자전축을 기준으로 시차가 발생한다.</p>
+
+<p>이 시차로 인해서 해외 서비스의 경우 시간 계산의 번거로움이 발생하였다.</p>
+
+<p>서버시간과 현재 내가 있는 시간대의 차이에 따라 데이터베이스저장된 정보를 다르게 해석할 수 있는 여지가 생긴다.</p>
+
+<h2 id="gmt">GMT</h2>
+
+<p>Greenwich Mean Time</p>
+
+<p>그리니치 평균시</p>
+
+<p><strong>잉글랜드 런던</strong>을 기점으로 <strong>뉴질랜드 웰린텅</strong>을 종점으로 설정되어있다.</p>
+
+<p>경도별로 타임존을 24분할 한다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-28/c9275567510bc0c955ccb4b8ce74ac6200545a34.svg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-28/c9275567510bc0c955ccb4b8ce74ac6200545a34.svg" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">타임존</th>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">표기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0:00</td>
+      <td style="text-align: center">런던</td>
+      <td style="text-align: center">GMT+0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1:00</td>
+      <td style="text-align: center">파리</td>
+      <td style="text-align: center">GMT+1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2:00</td>
+      <td style="text-align: center">카이로/예루살렘</td>
+      <td style="text-align: center">GMT+2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9:00</td>
+      <td style="text-align: center">서울/평양/도쿄</td>
+      <td style="text-align: center">GMT+9</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+      <td style="text-align: center">…</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12:00</td>
+      <td style="text-align: center">웰링턴</td>
+      <td style="text-align: center">GMT+12</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="utc">UTC</h2>
+
+<p>Universal Time Coordinated</p>
+
+<p>세계협정시</p>
+
+<p>1972년 1월 1일부터 시행된 국제 표준시 이다.</p>
+
+<p>GMT과 정말 작은 단위의 차이가 있지만 기술적인 부분에서 차이가 있을뿐</p>
+
+<p>일상 생활에서는 GMT == UTC 같은 타임존 구분이라고 보아도 무방하다.</p>
+
+<p>환경에따라 UTC, GMT 가 혼용되어지는 경우가 있다.</p>
+
+<h2 id="kst-jst">KST, JST</h2>
+
+<p>Korea Standard Time</p>
+
+<p>한국 표준시로 일본 표준시와 같은 기준으로 동경 135도 기준이다.</p>
+
+<p>UTC보다 9시간 빠르기 때문에 KST == UTC+09:00 이다.</p>
+
+<p>즉 런던이 UTC 기준으로 00시가 되었을 때 한국과 일본은 9시간이 먼저 흐른 UTC+9 오전 9시가 된다.</p>
+
+<p>UTC 0시는 KST 09시 이다.</p>
+
+<p>UTC 09시는 KST 18시 이다.</p>
+
+<p>과거 정치적인 이유로 서울과 평양 각각 UTC+8.5 를 사용한 기간이 있지만 현재는 모두 같은 타임존을 사용하고 있다.</p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/';
+      this.page.identifier = 'http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

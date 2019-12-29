@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ Chrome ] 유용한 크롬 플러그인 메모 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ Chrome ] 유용한 크롬 플러그인 메모" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wappalyzer 프레임워크 추적" />
+<meta property="og:description" content="Wappalyzer 프레임워크 추적" />
+<link rel="canonical" href="http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/" />
+<meta property="og:url" content="http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-03T06:35:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/","headline":"[ Chrome ] 유용한 크롬 플러그인 메모","dateModified":"2019-11-03T06:35:00+09:00","datePublished":"2019-11-03T06:35:00+09:00","description":"Wappalyzer 프레임워크 추적","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Chrome ] 유용한 크롬 플러그인 메모" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/chrome.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Chrome ] 유용한 크롬 플러그인 메모</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-11-03T06:35:00+09:00" itemprop="datePublished">
+          Nov 3, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/chrome.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#wappalyzer">Wappalyzer</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#프레임워크-추적">프레임워크 추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#css-peeper">CSS Peeper</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#css-추적">CSS 추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#pestcide">Pestcide</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#레이아웃-추적">레이아웃 추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#augury">Augury</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#앵귤러-디버그">앵귤러 디버그</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#fontface-ninja">Fontface Ninja</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#폰트-추적">폰트 추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#colorzilla">ColorZilla</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#컬러추적">컬러추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#toybox">Toybox</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#레이아웃-추적-1">레이아웃 추적</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#deadpool-wallpaper">Deadpool wallpaper</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#데드풀-배경화면">데드풀 배경화면</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#useragent">Useragent</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#유저-에이전트-변경">유저 에이전트 변경</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#fullpagecapture">Fullpagecapture</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#화면-캡쳐">화면 캡쳐</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#cors">Cors</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#cors-해제">Cors 해제</a></li>
+</ul>
+</li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="wappalyzer">Wappalyzer</h2>
+<h4 id="프레임워크-추적">프레임워크 추적</h4>
+
+<p>개발 구성을 살펴 볼 수 있다.</p>
+
+<p>여러 환경이 중첩되어 있는 경우 정확도가 다소 떨어질 수 있지만,</p>
+
+<p>그래도 간단하게 해당 백그라운드를 예측해보기에 좋다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp1.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp1.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg?hl=ko" target="_blank">https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg?hl=ko</a></p>
+
+<h2 id="css-peeper">CSS Peeper</h2>
+<h4 id="css-추적">CSS 추적</h4>
+
+<p>선택된 된 엘리먼트의 CSS 속성을 볼 수 있다.</p>
+
+<p>스타일 관련 플러그인답게 UI자체도 매우 이쁘다.</p>
+
+<p>개발자모드에 포함되어있는 기본 툴보다 한 눈에 보기 편하다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp2.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp2.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/css-peeper/mbnbehikldjhnfehhnaidhjhoofhpehk" target="_blank">https://chrome.google.com/webstore/detail/css-peeper/mbnbehikldjhnfehhnaidhjhoofhpehk</a></p>
+
+<h2 id="pestcide">Pestcide</h2>
+<h4 id="레이아웃-추적">레이아웃 추적</h4>
+
+<p>안드로이드 설정중에 모든 요소의 아웃라인을 표시하는 모드처럼</p>
+
+<p>페이지 구성요소의 아웃라인을 볼 수 있다.</p>
+
+<p>Padding 이나 Margin이 중첩되어서 먹고 상쇄되어있는 부분을 보기 좋다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp3.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp3.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/pesticide-for-chrome/bblbgcheenepgnnajgfpiicnbbdmmooh" target="_blank">https://chrome.google.com/webstore/detail/pesticide-for-chrome/bblbgcheenepgnnajgfpiicnbbdmmooh</a></p>
+
+<h2 id="augury">Augury</h2>
+<h4 id="앵귤러-디버그">앵귤러 디버그</h4>
+
+<p>Angular 같은 경우 요소가 클래스명도 동적으로 부여되고 컴포넌트자체가 SPA 흐름을 따라가기 때문에 정적인 페이지보다는 상대적으로 디버그하기 어려울 때가 많다.</p>
+
+<p>크롬 개발자모드에서 디버깅에 도움을 준다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp4.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp4.png" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd" target="_blank">https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd</a></p>
+
+<h2 id="fontface-ninja">Fontface Ninja</h2>
+<h4 id="폰트-추적">폰트 추적</h4>
+
+<p>요소검사를 따로 하지 않더라도 마우스 오버만으로도 어떤 폰트를 사용했는지 알려준다.</p>
+
+<p>영문폰트의 경우 더욱 편하게 사용할 수 있다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp5.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp5.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/fontface-ninja/eljapbgkmlngdpckoiiibecpemleclhh" target="_blank">https://chrome.google.com/webstore/detail/fontface-ninja/eljapbgkmlngdpckoiiibecpemleclhh</a></p>
+
+<h2 id="colorzilla">ColorZilla</h2>
+<h4 id="컬러추적">컬러추적</h4>
+
+<p>컬러피커를 제공한다.</p>
+
+<p>개발자모드에서도 컬러피커를 불러올 수 있지만 이 플러그인 사용하면 원하는 시점에 바로 불러올 수 있기때문에 사용하기 빠르다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp6.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp6.png" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp/related?hl=ko" target="_blank">https://chrome.google.com/webstore/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp/related?hl=ko</a></p>
+
+<h2 id="toybox">Toybox</h2>
+<h4 id="레이아웃-추적-1">레이아웃 추적</h4>
+
+<p>별도 관리형페이지까지 제공하고 디바이스별 보기도 지원한다. 다만 계정을 만들어야하고 번거로운 절차가 다소 있다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp7.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp7.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/toybox/mohlkfkdfnjciellfjppgfpffkchlopb" target="_blank">https://chrome.google.com/webstore/detail/toybox/mohlkfkdfnjciellfjppgfpffkchlopb</a></p>
+
+<h2 id="deadpool-wallpaper">Deadpool wallpaper</h2>
+<h4 id="데드풀-배경화면">데드풀 배경화면</h4>
+
+<p>새탭을 열때마다 새로운 월페이퍼가 노출된다.</p>
+
+<p>데드풀 팬으로서 매우 좋아하는 플러그인이다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp8.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp8.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/deadpool-wallpaper-hd-cus/eimnbnaeihejkfgjaahljdbhikfmedbc" target="_blank">https://chrome.google.com/webstore/detail/deadpool-wallpaper-hd-cus/eimnbnaeihejkfgjaahljdbhikfmedbc</a></p>
+
+<h2 id="useragent">Useragent</h2>
+<h4 id="유저-에이전트-변경">유저 에이전트 변경</h4>
+
+<p>별도 모바일 페이지 URL이 존재하는 경우 ( 보통 m.도메인 또는 /m, 파라미터=mobile ) 는</p>
+
+<p>데스크톱에서도 모바일 레이아웃을 쉽게 확인 할 수 있지만 해당페이지가 UserAgent를 통해 디바이스를 구분하고 있는 경우 그럴 수 없다.</p>
+
+<p>UserAgent 를 변조해주는 플러그인</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp9.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp9.png" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg?hl=ko" target="_blank">https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg?hl=ko</a></p>
+
+<h2 id="fullpagecapture">Fullpagecapture</h2>
+<h4 id="화면-캡쳐">화면 캡쳐</h4>
+
+<p>스크롤 해야 보여지는 영역까지 모두 한 눈에 확인하고 싶다면 보통은 포토샵 등 툴을 사용해서 스크릿샷을 이어 붙이기 마련이다.</p>
+
+<p>이 플러그인은 그런 행동을 자동화해준다.</p>
+
+<p>다만 스크롤에 따른 애니메이션 이벤트가 많은 경우는 정확도가 다소 떨어진다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp10.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp10.jpg" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl" target="_blank">https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl</a></p>
+
+<h2 id="cors">Cors</h2>
+
+<h4 id="cors-해제">Cors 해제</h4>
+
+<p>작업중 POST등 통신 테스트를 진행할때 Ajax 등 기술에서 Cors 관련 제한이 발생하는 경우,</p>
+
+<p>서버에서 WhiteList 를 작성해주는 방법등이 있지만 이 플러그인을 사용해서 간단하게 크롬자체에서 Cors 설정을 무시할 수 있다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp11.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-03/cp11.png" /></p>
+
+<p><a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf" target="_blank">https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf</a></p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/';
+      this.page.identifier = 'http://localhost:4000/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/algorithm/2019/11/03/%ED%81%AC%EB%A1%AC%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EC%B2%9C/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

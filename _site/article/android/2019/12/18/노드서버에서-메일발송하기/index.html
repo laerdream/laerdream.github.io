@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ NodeJS ] 노드서버에서 메일발송하기 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ NodeJS ] 노드서버에서 메일발송하기" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="nodemailer" />
+<meta property="og:description" content="nodemailer" />
+<link rel="canonical" href="http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/" />
+<meta property="og:url" content="http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-18T19:30:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/","headline":"[ NodeJS ] 노드서버에서 메일발송하기","dateModified":"2019-12-18T19:30:00+09:00","datePublished":"2019-12-18T19:30:00+09:00","description":"nodemailer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ NodeJS ] 노드서버에서 메일발송하기" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/node.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ NodeJS ] 노드서버에서 메일발송하기</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-12-18T19:30:00+09:00" itemprop="datePublished">
+          Dec 18, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/node.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#nodemailer">nodemailer</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#공식-페이지">공식 페이지</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#사용법">사용법</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#메일-발송">메일 발송</a></li>
+<li class="toc-entry toc-h3"><a href="#메일-발송-콜백">메일 발송 콜백</a></li>
+<li class="toc-entry toc-h3"><a href="#nodemailer-juice">nodemailer-juice</a></li>
+<li class="toc-entry toc-h3"><a href="#메일-발송-샘플">메일 발송 샘플</a></li>
+<li class="toc-entry toc-h3"><a href="#에러-메세지가-발생하는-경우">에러 메세지가 발생하는 경우</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#보안수준-설정">보안수준 설정</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="nodemailer">nodemailer</h2>
+
+<p>노드 서버에서 매우 쉽게 메일을 발송할 수 있는 외부 모듈이 존재한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">nodemailer</span>
+</code></pre></div></div>
+
+<p>이렇게 설치를 하면 pacakage.json 에 현재 기준 5.0.0 이 설치된다.</p>
+
+<h3 id="공식-페이지">공식 페이지</h3>
+<p><a href="https://www.nodemailer.com/">https://www.nodemailer.com/</a></p>
+
+<h2 id="사용법">사용법</h2>
+
+<p>사용법은 매우 간단하다.</p>
+
+<p>모듈을 임포트 한 후 .createTransport 메소드를 수행한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">nodemailer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">nodemailer</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">nodemailer</span><span class="p">.</span><span class="nx">createTransport</span><span class="p">(</span><span class="err">설정정보</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>발송 준비를 위한 셋업을 한다.</p>
+
+<p>이 Gmail 기준으로 설정정보에 들어가는 기본 값은 다음과 같이 설정할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">service</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">gmail</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">auth</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nl">user</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">계정명@gmail.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">pass</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">패스워드</span><span class="dl">'</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>서비스에 따라서 포트를 따로 설정해주거나 개별 SMTP 서버를 기입할 수 도 있다.</p>
+
+<h3 id="메일-발송">메일 발송</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">transporter</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">data</span><span class="p">[,</span> <span class="nx">callback</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p>발송방법 또한 간단하다. .sendMail 메소드를 데이터를 넣어서 수행한다.</p>
+
+<p>결과 콜백은 매우 다양한 형태로 제공된다.</p>
+
+<p>리턴받은 객체들로 상황에 따른 후처리를 할 수 있다.</p>
+
+<h3 id="메일-발송-콜백">메일 발송 콜백</h3>
+
+<p><strong>err</strong> : 에러 메세지 콜백</p>
+
+<p><strong>info</strong> : 결과에 대한 정보값</p>
+
+<p><strong>info.messageId</strong> : 결과 메세지 아이디</p>
+
+<p><strong>info.envelope</strong> : 결과 메세지</p>
+
+<p><strong>info.accepted</strong> : 전송이 승인 되었을 때</p>
+
+<p><strong>info.rejected</strong> : 전송이 반려되었을 때</p>
+
+<p><strong>info.pending</strong> : 전송이 대기 상태일 때</p>
+
+<h3 id="nodemailer-juice">nodemailer-juice</h3>
+
+<p>또한 nodemailer-juice 를 설치하면 스타일을 인라인이 아닌 문서내에 첨부 할 수 있다.</p>
+
+<p>그러면 컴파일 과정에서 자동으로 inline 화 시켜주기 때문에 매우 편리하다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">nodemailer</span><span class="o">-</span><span class="nx">juice</span>
+</code></pre></div></div>
+
+<h3 id="메일-발송-샘플">메일 발송 샘플</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">transporter</span> <span class="o">=</span> <span class="nx">nodemailer</span><span class="p">.</span><span class="nx">createTransport</span><span class="p">(</span><span class="nx">connections</span><span class="p">.</span><span class="nx">mailer</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">inLineCss</span>   <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">nodemailer-juice</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">transporter</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">compile</span><span class="dl">'</span><span class="p">,</span> <span class="nx">inLineCss</span><span class="p">());</span>
+
+<span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span>
+  <span class="dl">'</span><span class="s1">&lt;style&gt;스타일&lt;/style&gt;</span><span class="dl">'</span><span class="o">+</span>
+  <span class="dl">'</span><span class="s1">&lt;div&gt;메일내용&lt;/div&gt;</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">mailOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">from</span><span class="p">:</span> <span class="err">보내는사람</span><span class="p">,</span>
+  <span class="na">to</span><span class="p">:</span> <span class="err">받는사람</span><span class="p">,</span>
+  <span class="na">subject</span><span class="p">:</span> <span class="err">제목</span><span class="p">,</span>
+  <span class="na">html</span><span class="p">:</span> <span class="nx">contents</span>
+<span class="p">};</span>
+
+<span class="nx">transporter</span><span class="p">.</span><span class="nx">sendMail</span><span class="p">(</span><span class="nx">mailOptions</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">info</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Email sent: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">info</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="에러-메세지가-발생하는-경우">에러 메세지가 발생하는 경우</h3>
+
+<p>Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a13sm2406148pfc.40 - gsmtp</p>
+
+<p>에러 로그에 나오는 링크로 이동해 보면</p>
+
+<ol>
+  <li>
+    <p>계정 및 패스워드를 다시 확인</p>
+  </li>
+  <li>
+    <p>보안 수준 확인</p>
+  </li>
+</ol>
+
+<p>이렇게 에러메세지가 나온다면 정말 계정과 비밀번호가 틀렸거나 아니면 보안 수준 설정을 하지 않은 경우이다.</p>
+
+<h4 id="보안수준-설정">보안수준 설정</h4>
+<p>https://myaccount.google.com/lesssecureapps</p>
+
+<p>보안수준 설정부분에 가서 그림과 같이 보안 수준이 낮은 앱의 액세서를 허용해야 외부 서버에서 구글 메일을 발송 할 수 있다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-12-19/googlesecure.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-12-19/googlesecure.png" /></p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/';
+      this.page.identifier = 'http://localhost:4000/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/android/2019/12/18/%EB%85%B8%EB%93%9C%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%A9%94%EC%9D%BC%EB%B0%9C%EC%86%A1%ED%95%98%EA%B8%B0/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

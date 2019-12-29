@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ 국요리 ] 소고기미역국 도전기 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ 국요리 ] 소고기미역국 도전기" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="도전" />
+<meta property="og:description" content="도전" />
+<link rel="canonical" href="http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/" />
+<meta property="og:url" content="http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-14T03:40:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/","headline":"[ 국요리 ] 소고기미역국 도전기","dateModified":"2019-09-14T03:40:00+09:00","datePublished":"2019-09-14T03:40:00+09:00","description":"도전","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ 국요리 ] 소고기미역국 도전기" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/seaweed.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ 국요리 ] 소고기미역국 도전기</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-09-14T03:40:00+09:00" itemprop="datePublished">
+          Sep 14, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/seaweed.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#도전">도전</a></li>
+<li class="toc-entry toc-h2"><a href="#재료준비">재료준비</a></li>
+<li class="toc-entry toc-h2"><a href="#미역불리기">미역불리기</a></li>
+<li class="toc-entry toc-h2"><a href="#양념-준비">양념 준비</a></li>
+<li class="toc-entry toc-h2"><a href="#국물-내기">국물 내기</a></li>
+<li class="toc-entry toc-h2"><a href="#미역-완성">미역 완성</a></li>
+<li class="toc-entry toc-h2"><a href="#볶기">볶기</a></li>
+<li class="toc-entry toc-h2"><a href="#완성">완성</a></li>
+<li class="toc-entry toc-h2"><a href="#후기">후기</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="도전">도전</h2>
+
+<p>결혼하고 처음으로 맞는 아내의 생일을 위해서 미역국 만들기에 도전해보기로 하였습니다.</p>
+
+<h2 id="재료준비">재료준비</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">이름</th>
+      <th style="text-align: center">수량</th>
+      <th style="text-align: right">가격</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">다시멸치(국물용)</td>
+      <td style="text-align: center">1ea</td>
+      <td style="text-align: right">5,350원</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">깐바지락살</td>
+      <td style="text-align: center">1ea</td>
+      <td style="text-align: right">3,420원</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">동원완도어린미역</td>
+      <td style="text-align: center">1ea</td>
+      <td style="text-align: right">4,950원</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">한우사태</td>
+      <td style="text-align: center">165g</td>
+      <td style="text-align: right">7,380원</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">한우양지</td>
+      <td style="text-align: center">202g</td>
+      <td style="text-align: right">12,070원</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_0.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="미역불리기">미역불리기</h2>
+
+<p>미역을 만지는것 자체를 처음해보았기 때문에 집밥 백선생 미역국편 영상을 참고하면서 만들었습니다.</p>
+
+<p>종이컵 반컵정도가 4인분이라고 했는데 담으면서 과연 이게 그정도로 불어나는지 계속 의심이 들었지만</p>
+
+<p>하지만 백선생님을 믿자고 다짐하면서 그대로 수행</p>
+
+<p>종이컵이 없어서 일반 유리컵에 담아보았습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_2.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="양념-준비">양념 준비</h2>
+
+<p>국간장과 참기름 소금 다진마늘을 준비하라고 나왔는데 하필 국간장이 이미 소진된 상태</p>
+
+<p>계란조림에 썼던 간장으로 대체했습니다.</p>
+
+<p>다진마늘은 개인적으로 엄청 최애하는 아이템이기 때문에 듬뿍 담았습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_3.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="국물-내기">국물 내기</h2>
+
+<p>국물 맛을 더 내고 싶어서 멸치를 추가하였습니다.</p>
+
+<p>몇 마리 안되었는데 내장 제거하는데 10분 이상을 소비한것 같다. 그래도 분리시키면서 뭔가 도려내는 재미가 있었습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_5.jpg" alt="미역국 이미지" /></p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_7.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="미역-완성">미역 완성</h2>
+
+<p>한 5분정도 경과했던거 같은데 미역이 물을 흡수하면서 되살아 났습니다.</p>
+
+<p>이정도면 엄청난 회복력인것 같다는 생각이 들었습니다. 다시 한번 자연의 신기를 느꼈습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_4.jpg" alt="미역국 이미지" /></p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_6.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="볶기">볶기</h2>
+
+<p>매뉴얼에 나온대로 참기름과 함께 미역을 볶았습니다.</p>
+
+<p>고기를 투하하고 좋아하는 나무주걱으로 고기의 기름도 배어나오게끔 잘 저어주면서 익혔습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_8.jpg" alt="미역국 이미지" /></p>
+
+<p>아직까지는 시레기 국의 느낌이 나네요. 육수와 양념을 조절해 가면서 조금식 끓여나갔습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_9.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="완성">완성</h2>
+
+<p>처음 해본 미역국 치고는 만족스러운 맛이 나왔습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-15/0915_seaweedsoup_10.jpg" alt="미역국 이미지" /></p>
+
+<h2 id="후기">후기</h2>
+<p>체감 난이도는 [중]정도 였던것 같습니다.</p>
+
+<p>국요리에 도전이 아직 낯설었지만 좋은 경험이었습니다.</p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/';
+      this.page.identifier = 'http://localhost:4000/article/cook/2019/09/14/cook-seaweedsoup/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/cook/2019/09/14/cook-seaweedsoup/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

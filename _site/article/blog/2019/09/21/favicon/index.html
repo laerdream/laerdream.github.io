@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ 블로그 만들기 - 2 ] 파비콘과 오픈그래프 이미지 설정하기 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ 블로그 만들기 - 2 ] 파비콘과 오픈그래프 이미지 설정하기" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="파비콘과 오픈그래프이미지" />
+<meta property="og:description" content="파비콘과 오픈그래프이미지" />
+<link rel="canonical" href="http://localhost:4000/article/blog/2019/09/21/favicon/" />
+<meta property="og:url" content="http://localhost:4000/article/blog/2019/09/21/favicon/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-21T16:54:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/blog/2019/09/21/favicon/","headline":"[ 블로그 만들기 - 2 ] 파비콘과 오픈그래프 이미지 설정하기","dateModified":"2019-09-21T16:54:00+09:00","datePublished":"2019-09-21T16:54:00+09:00","description":"파비콘과 오픈그래프이미지","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/blog/2019/09/21/favicon/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ 블로그 만들기 - 2 ] 파비콘과 오픈그래프 이미지 설정하기" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/ogimage.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ 블로그 만들기 - 2 ] 파비콘과 오픈그래프 이미지 설정하기</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-09-21T16:54:00+09:00" itemprop="datePublished">
+          Sep 21, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/ogimage.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#파비콘과-오픈그래프이미지">파비콘과 오픈그래프이미지</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#파비콘">파비콘</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#from-httpskowikipediaorgwiki파비콘">From https://ko.wikipedia.org/wiki/파비콘</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#오픈그래프이미지">오픈그래프이미지</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#디자인-작업">디자인 작업</a></li>
+<li class="toc-entry toc-h2"><a href="#코드-삽입">코드 삽입</a></li>
+<li class="toc-entry toc-h2"><a href="#파비콘-교체가-되지-않는-경우">파비콘 교체가 되지 않는 경우</a></li>
+<li class="toc-entry toc-h2"><a href="#적용확인">적용확인</a></li>
+<li class="toc-entry toc-h2"><a href="#완성이미지">완성이미지</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="파비콘과-오픈그래프이미지">파비콘과 오픈그래프이미지</h2>
+
+<h3 id="파비콘">파비콘</h3>
+<p>파비콘은 위키피디아 정의상으로는</p>
+
+<p><code class="highlighter-rouge">파비콘(영어: favicon, 'favorites + icon')</code></p>
+<h5 id="from-httpskowikipediaorgwiki파비콘">From <a href="https://ko.wikipedia.org/wiki/%ED%8C%8C%EB%B9%84%EC%BD%98" target="_blank">https://ko.wikipedia.org/wiki/파비콘</a></h5>
+
+<p>뜻을 가지고 있는데 어떤 페이지에 도달 하였을때 브라우저 해당 탭창에 뜨는 작은 아이콘입니다.</p>
+
+<p>보통 즐겨찾기가 홈 화면에 해당 페이지를 복사하였을때 해당 아이콘이 노출되게 됩니다.</p>
+
+<p>사실 없어도 대세의 지장은 없지만 이런 요소 하나하나가 완성도를 만들어 나가는 것이라고 생각하기 때문에</p>
+
+<p>개인적으로는 꼭 필요한 항목이라고 생각합니다.</p>
+
+<h3 id="오픈그래프이미지">오픈그래프이미지</h3>
+
+<p>오픈그래프이미지 (OpenGraph Image)는 OG image 라고도 불리며</p>
+
+<p>요약하자면 현재 문서의 초록이라고 볼 수 있습니다.</p>
+
+<p>SNS가 활성화 되고 특정 페이지가 외부로 공유되는 경우가 많이때문에 이런 목차가 점점 중요해진다고 생각하는데요.</p>
+
+<p>작은단위의 페이지 사이트맵이라고 생각해도 무방합니다.</p>
+
+<p>보통이 요소가 직접적으로 노출되는 공간은 카톡으로 주소를 공유했을때나 메일등 에디터에 해당 URL를 붙여넣는 경우</p>
+
+<p>이미지가 노출 됩니다.</p>
+
+<h2 id="디자인-작업">디자인 작업</h2>
+
+<p>사실 이미지에 대한 정해진 규격은 없고 각 메신저나 서드파티앱에 따라 크기가 제각각이지만</p>
+
+<p>한국에서는 카카오톡 사용비중이 높기 때문에 카카오 기준으로 작업하였습니다.</p>
+
+<p><code class="highlighter-rouge">현재 카카오톡 OGIMAGE 규격은 800px X 400px 입니다.</code></p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon1.png" alt="파비콘이미지" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon2.png" alt="파비콘이미지" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon3.png" alt="파비콘이미지" /></p>
+
+<p>파비콘 이미지의 경우 정사각으로 작업하면 되는데</p>
+
+<p>저는 소셜등 썸네일 기준크기가 500px인 경우가 많아서 해당 크기로 작업하고 150px로 리사이징 하였습니다.</p>
+
+<p>이전에는 png 파일을 지원하지 않는 브라우저가 많아서 ico 파일 변환을 하였는데</p>
+
+<p>이제는 png 파일 만으로도 대부분 표현이 가능한 것 같습니다.</p>
+
+<p>그리고 규격도 24 x 24, 48 x 48 이런식으로 소형 규격이었는데 이제는 브라우저 자체에서도 리사이징해서 잘 표현해주는 것 같습니다.</p>
+
+<p>취향에 따라 원형이미지를 넣어도 무방합니다. 다만 저장시 png 로 설정해야 배경이 뚤린 알파값 표현을 할 수 있습니다.</p>
+
+<h2 id="코드-삽입">코드 삽입</h2>
+
+<p>브라우저 별로 삽입 정의가 조금 씩 다른데 두가지 소스를 모두 넣어주면 됩니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"path/to/favicon.ico"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">href=</span><span class="s">"path/to/favicon.png"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:url"</span> <span class="na">content=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:title"</span> <span class="na">content=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:image"</span> <span class="na">content=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:description"</span> <span class="na">content=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:type"</span> <span class="na">content=</span><span class="s">"article"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="파비콘-교체가-되지-않는-경우">파비콘 교체가 되지 않는 경우</h2>
+
+<p>카카로 로봇이 한번 저장된 이미지를 물고 있는 것 같습니다.</p>
+
+<p>개발자 페이지에 접속해서 캐시 삭제 도구에 해당 URL을 입력해주면 정보가 초기화 됩니다.</p>
+
+<p><a href="https://developers.kakao.com/docs/cache" target="_blank">https://developers.kakao.com/docs/cache</a></p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon4.png" alt="파비콘이미지" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon5.png" alt="파비콘이미지" /></p>
+
+<h2 id="적용확인">적용확인</h2>
+
+<p>카카오에도 정상적으로 잘 나오고 파비콘도 잘 표시되네요.</p>
+
+<p>하와이안 셔츠감성으로 맞추어봤는데 나중에 여러분위기 별로 맞춰서 만들어보면 재미있을 것 같습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon6.png" alt="파비콘이미지" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon8.png" alt="파비콘이미지" /></p>
+
+<h2 id="완성이미지">완성이미지</h2>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-21/2019-09-21-favicon7.png" alt="파비콘이미지" /></p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/blog/2019/09/21/favicon/';
+      this.page.identifier = 'http://localhost:4000/article/blog/2019/09/21/favicon/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/blog/2019/09/21/favicon/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

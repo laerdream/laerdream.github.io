@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ NodeJS ] Multer 복수 필드 업로드 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ NodeJS ] Multer 복수 필드 업로드" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Multer" />
+<meta property="og:description" content="Multer" />
+<link rel="canonical" href="http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/" />
+<meta property="og:url" content="http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-22T12:40:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/","headline":"[ NodeJS ] Multer 복수 필드 업로드","dateModified":"2019-09-22T12:40:00+09:00","datePublished":"2019-09-22T12:40:00+09:00","description":"Multer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ NodeJS ] Multer 복수 필드 업로드" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/node.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ NodeJS ] Multer 복수 필드 업로드</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-09-22T12:40:00+09:00" itemprop="datePublished">
+          Sep 22, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/node.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#multer">Multer</a></li>
+<li class="toc-entry toc-h2"><a href="#프론트엔드-구성">프론트엔드 구성</a></li>
+<li class="toc-entry toc-h2"><a href="#노드-모듈-설치">노드 모듈 설치</a></li>
+<li class="toc-entry toc-h2"><a href="#서비스-생성">서비스 생성</a></li>
+<li class="toc-entry toc-h2"><a href="#업로드-처리">업로드 처리</a></li>
+<li class="toc-entry toc-h2"><a href="#업로드-확인">업로드 확인</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="multer">Multer</h2>
+
+<p>Multer는 multipart/form-data 를 컨트롤 할 수 있는 NodeJS 미들웨어입니다.</p>
+
+<p><a href="https://www.npmjs.com/package/multer" target="_blank">https://www.npmjs.com/package/multer</a></p>
+
+<p>사용함으로써 Request Body 의 File 객체를 쉽게 컨트롤 할 수 있습니다.</p>
+
+<p>여러 옵션들을 편리하게 제공합니다.</p>
+
+<h2 id="프론트엔드-구성">프론트엔드 구성</h2>
+
+<p>프론트 영역에서는 전송할 폼 필드 이름만 설정해 주시면 됩니다.</p>
+
+<p>각 프레임 워크별로 별도의 폼빌더 등이 있을 수 있지만 생략하고 일반 html 기준으로는 다음과 같습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/profile"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h2 id="노드-모듈-설치">노드 모듈 설치</h2>
+
+<p><code class="highlighter-rouge">$ npm install multer --save</code>
+<code class="highlighter-rouge">$ npm install multer-s3 --save</code></p>
+
+<p>저장 목적지를 s3로 바로 올리는 플러그인도 존재합니다.</p>
+
+<p>세가지 주요 메소드</p>
+
+<p><strong>.single(fieldname)</strong>
+하나의 파일을 업로드 할때 사용합니다. file에 복수의 파일을 허용하지 않습니다.</p>
+
+<p><strong>.array(fieldname[, maxCount])</strong>
+복수의 파일을 업로드 할때 사용합니다. html에서 multiple 속성이 허용되거나 폼데이터에서 File 이 FileList 에 담겨올경우 입니다.</p>
+
+<p><strong>.fields(fields)</strong>
+여러 파일 필드를 처리하는 메소드입니다.</p>
+
+<p>처음에 유튜브등에 다른 유저들의 영상의 경우 single과 array만 사용한 예제뿐이라서</p>
+
+<p>문서를 보기 전까지 fields 타입이 있는 줄 모르고 업로드 하나의 과정을 각각 비동기 처리했던 경험이 있는데</p>
+
+<p>.fields를 사용하면 매우 쉽게 해결할 수 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">avatar</span><span class="dl">'</span><span class="p">,</span> <span class="na">maxCount</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">gallery</span><span class="dl">'</span><span class="p">,</span> <span class="na">maxCount</span><span class="p">:</span> <span class="mi">8</span> <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>maxCount 옵션은 생략할 수 있습니다.</p>
+
+<h2 id="서비스-생성">서비스 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fileFilter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">mimetype</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">image/jpeg</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">file</span><span class="p">.</span><span class="nx">mimetype</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">image/png</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">file</span><span class="p">.</span><span class="nx">mimetype</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">image/gif</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">cb</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Invalid Mime Type, only JPEG/PNG/GIF</span><span class="dl">'</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">upload</span> <span class="o">=</span>
+<span class="nx">multer</span><span class="p">({</span>
+  <span class="na">fileFilter</span> <span class="p">:</span> <span class="nx">fileFilter</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">multerS3</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="na">s3</span><span class="p">:</span> <span class="dl">'</span><span class="s1">s3설정값</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">bucket</span> <span class="p">:</span>  <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">bucket</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="na">acl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public-read</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">metadata</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="na">fieldName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">버킷이름</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">},</span>
+    <span class="na">key</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">저장할 파일명</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<p>fileFilter 인자 등을 넣어서 형검사를 선행 할 수 있습니다.</p>
+
+<h2 id="업로드-처리">업로드 처리</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">singleUpload</span> <span class="o">=</span> <span class="nx">upload</span><span class="p">.</span><span class="nx">single</span><span class="p">(</span><span class="dl">'</span><span class="s1">uploads</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">arrayUpload</span> <span class="o">=</span> <span class="nx">upload</span><span class="p">.</span><span class="nx">array</span><span class="p">(</span><span class="dl">'</span><span class="s1">uploads</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">multipleUpload</span> <span class="o">=</span> <span class="nx">upload</span><span class="p">.</span><span class="nx">fields</span><span class="p">([{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cover</span><span class="dl">'</span><span class="p">,</span> <span class="p">},</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uploads</span><span class="dl">'</span><span class="p">,</span> <span class="p">}]);</span>
+</code></pre></div></div>
+
+<h2 id="업로드-확인">업로드 확인</h2>
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-22/2019-09-22-multer0.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-22/2019-09-22-multer0.png" /></p>
+
+<p>구조만 익숙해지면 정말 사용하기 쉬운 모듈 같습니다.</p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/';
+      this.page.identifier = 'http://localhost:4000/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/nodejs/2019/09/22/Multer-%EB%B3%B5%EC%88%98-%ED%95%84%EB%93%9C-%EC%97%85%EB%A1%9C%EB%93%9C/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

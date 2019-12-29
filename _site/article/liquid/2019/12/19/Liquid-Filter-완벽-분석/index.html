@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ Liquid ] Liquid Filter 완벽 분석 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ Liquid ] Liquid Filter 완벽 분석" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Liquid 소개" />
+<meta property="og:description" content="Liquid 소개" />
+<link rel="canonical" href="http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/" />
+<meta property="og:url" content="http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-19T11:40:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/","headline":"[ Liquid ] Liquid Filter 완벽 분석","dateModified":"2019-12-19T11:40:00+09:00","datePublished":"2019-12-19T11:40:00+09:00","description":"Liquid 소개","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Liquid ] Liquid Filter 완벽 분석" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/liquid.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Liquid ] Liquid Filter 완벽 분석</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-12-19T11:40:00+09:00" itemprop="datePublished">
+          Dec 19, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/liquid.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#liquid-소개">Liquid 소개</a></li>
+<li class="toc-entry toc-h2"><a href="#필터-분석">필터 분석</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#연산관련">연산관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#plus--minus--times--divided_by">plus | minus | times | divided_by</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#숫자-관련">숫자 관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#abs--ceil--floor--round--modulo">abs | ceil | floor | round | modulo</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#표현관련">표현관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#default--at_least--at_most">default | at_least | at_most</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#날짜-관련">날짜 관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#date">date</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#배열-관련">배열 관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#concat--compact--first--last--join--map--reverse--size--split--uniq">concat | compact | first | last | join | map | reverse | size | split | uniq</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#정렬관련">정렬관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#sort--sort_natural--where">sort | sort_natural | where</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#문자-관련">문자 관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#append--prepend">append | prepend</a></li>
+<li class="toc-entry toc-h4"><a href="#capitalize--downcase--upcase">capitalize | downcase | upcase</a></li>
+<li class="toc-entry toc-h4"><a href="#lstrip--rstrip--strip--strip_html--strip_newlines">lstrip | rstrip | strip | strip_html | strip_newlines</a></li>
+<li class="toc-entry toc-h4"><a href="#remove--remove_first--replace--replace_first">remove | remove_first | replace | replace_first</a></li>
+<li class="toc-entry toc-h4"><a href="#slice--truncate--truncatewords">slice | truncate | truncatewords</a></li>
+<li class="toc-entry toc-h4"><a href="#url_decode--url_encode">url_decode | url_encode</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#태그-관련">태그 관련</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#escape--escape_once--newline_to_br">escape | escape_once | newline_to_br</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#느낀점">느낀점</a></li>
+</ul>
+</li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="liquid-소개">Liquid 소개</h2>
+
+<p>liqud 는 jekyll 에서 사용하고 있는 표현언어이고 공식 도큐먼트 페이지는 다음과 같다.
+https://shopify.github.io/liquid/</p>
+
+<p>shopify 도메인이 연관되 있는것 보니 트위터와 부트스트랩의 관계처럼 내부 엔진을 공개한 케이스인것 같다.</p>
+
+<p>공식문서에는 shopify 와 jekyll 이 liqud 문법을 선택했다고 나와있다.</p>
+
+<h2 id="필터-분석">필터 분석</h2>
+
+<p>마치 Angular Pipe와 같은 형태로 사용된다.</p>
+
+<p>공식문서는 알파벳 순으로 정렬되어있기 때문에 간단한 한글 설명을 적고 이를 속성별로 재배열 하였다.</p>
+
+<p>언젠가는 공식 문서가 바뀔 수도 있을 것 같지만 지금 이대로 기록을 남기는 것도 유의미하다고 판단되었다.</p>
+
+<h3 id="연산관련">연산관련</h3>
+
+<h4 id="plus--minus--times--divided_by">plus | minus | times | divided_by</h4>
+
+<p>plus : 더하기</p>
+
+<p><code class="highlighter-rouge">{{ 4 | plus: 2 }}</code> -&gt; <code class="highlighter-rouge">6</code></p>
+
+<p>minus : 빼기</p>
+
+<p><code class="highlighter-rouge">{{ 4 | minus: 2 }}</code> -&gt; <code class="highlighter-rouge">2</code></p>
+
+<p>times : 곱하기</p>
+
+<p><code class="highlighter-rouge">{{ 4 | times: 2 }}</code> -&gt; <code class="highlighter-rouge">8</code></p>
+
+<p>divided_by : 나누기</p>
+
+<p><code class="highlighter-rouge">{{ 4 | divided_by: 2 }}</code> -&gt; <code class="highlighter-rouge">2</code></p>
+
+<h3 id="숫자-관련">숫자 관련</h3>
+
+<h4 id="abs--ceil--floor--round--modulo">abs | ceil | floor | round | modulo</h4>
+
+<p>abs : 절대값을 표현해준다.</p>
+
+<p><code class="highlighter-rouge">{{ -17 | abs }}</code> -&gt; <code class="highlighter-rouge">17</code></p>
+
+<p>ceil : 올림 (정수 기준)</p>
+
+<p><code class="highlighter-rouge">{{ 1.2 | ceil }}</code> -&gt; <code class="highlighter-rouge">2</code></p>
+
+<p>floor : 내림</p>
+
+<p><code class="highlighter-rouge">{{ 1.2 | floor }}</code> -&gt; <code class="highlighter-rouge">1</code></p>
+
+<p>round : 반올림</p>
+
+<p><code class="highlighter-rouge">{{ 1.2 | round }}</code> -&gt; <code class="highlighter-rouge">1</code><br />
+<code class="highlighter-rouge">{{ 1.7 | round }}</code> -&gt; <code class="highlighter-rouge">2</code><br />
+<code class="highlighter-rouge">{{ 183.357 | round: 2 }}</code> -&gt; <code class="highlighter-rouge">183.36</code></p>
+
+<p>modulo : 몫</p>
+
+<p><code class="highlighter-rouge">{{ 3 | modulo: 2 }}</code> -&gt; <code class="highlighter-rouge">1</code></p>
+
+<h3 id="표현관련">표현관련</h3>
+
+<h4 id="default--at_least--at_most">default | at_least | at_most</h4>
+
+<p>default : 기본 값을 지정한다.</p>
+
+<p><code class="highlighter-rouge">{{ someThing | default: 2.99 }}</code> -&gt; <code class="highlighter-rouge">2.99</code></p>
+
+<p>at_least : 최소값을 지정한다. 지정값보다 입력값이 크면 입력값을 그대로 노출하고<br />반대의 경우 최소값을 노출한다.</p>
+
+<p><code class="highlighter-rouge">{{ 4 | at_least: 5 }}</code> -&gt; <code class="highlighter-rouge">5</code></p>
+
+<p>at_most : 최댓값을 지정한다. 최소값의 반대 개념</p>
+
+<p><code class="highlighter-rouge">{{ 4 | at_least: 3 }}</code> -&gt; <code class="highlighter-rouge">4</code></p>
+
+<h3 id="날짜-관련">날짜 관련</h3>
+
+<h4 id="date">date</h4>
+
+<p>data : 날짜 moment 와 비슷한 역할을 수행한다.</p>
+
+<p><code class="highlighter-rouge">{{ "now" | date: "%Y-%m-%d %H:%M" }}</code> -&gt; <code class="highlighter-rouge">2019-09-19 17:48</code></p>
+
+<h3 id="배열-관련">배열 관련</h3>
+
+<h4 id="concat--compact--first--last--join--map--reverse--size--split--uniq">concat | compact | first | last | join | map | reverse | size | split | uniq</h4>
+
+<p>예제 생략</p>
+
+<p>concat : 배열 합체</p>
+
+<p>compact : 빈배열 삭제</p>
+
+<p>first : 배열의 첫번째 값을 가져온다. / 표현식에 메소드형태로도 사용가능</p>
+
+<p>last : 배열의 마지막 값을 가져온다.</p>
+
+<p>join : 배열 split 구분자에 문자를 추가하여 다시 더한다.</p>
+
+<p>map : 새로운 배열로 매핑한다. 사용빈도가 매우 높을 것으로 판단된다.</p>
+
+<p>reverse : 배열을 역순으로 다시 반환해준다.</p>
+
+<p>size : 배열 수를 반환한다. 매우 많은 빈도로 사용될 것 같다.</p>
+
+<p>split : 배열을 나눈다.</p>
+
+<p>uniq : 배열에서 중복 항목을 제외시킨다. SQL에서 distinct 와 역할이 같다. 다만 프론트에서 처리할뿐</p>
+
+<h3 id="정렬관련">정렬관련</h3>
+
+<h4 id="sort--sort_natural--where">sort | sort_natural | where</h4>
+
+<p>예제 생략</p>
+
+<p>sort : 대문자가 우선하고 알파벳 순 정렬</p>
+
+<p>sort_natural : 알파벳 순 정렬</p>
+
+<p>where : 배열에 필터를 건다. 매우 유용할 것 같다.</p>
+
+<h3 id="문자-관련">문자 관련</h3>
+
+<h4 id="append--prepend">append | prepend</h4>
+<p>문자열 뒤로 새로운 문자를 더한다.<br />jQuery 에서의 사용과는 다르게 DOM 요소가 아닌 string 만 가능하다.</p>
+
+<p><code class="highlighter-rouge">{{ "바나나" | append: "우유" }}</code> -&gt; <code class="highlighter-rouge">바나나우유</code></p>
+
+<p>문자열 앞으로 새로운 문자를 더한다.<br />append의 반대 속성이다.</p>
+
+<p><code class="highlighter-rouge">{{ "오렌지" | prepend: "환타" }}</code> -&gt; <code class="highlighter-rouge">환타오렌지</code></p>
+
+<h4 id="capitalize--downcase--upcase">capitalize | downcase | upcase</h4>
+<p>첫글자를 대문자로 변환한다.</p>
+
+<p><code class="highlighter-rouge">{{ "title" | capitalize }}</code> -&gt; <code class="highlighter-rouge">Title</code></p>
+
+<p>모든 문자열을 소문자로 변환한다.</p>
+
+<p><code class="highlighter-rouge">{{ "WORLD" | downcase }}</code> -&gt; <code class="highlighter-rouge">world</code></p>
+
+<p>모든 문자열을 대문자로 변환한다.</p>
+
+<p><code class="highlighter-rouge">{{ "world" | upcase }}</code> -&gt; <code class="highlighter-rouge">WORLD</code></p>
+
+<h4 id="lstrip--rstrip--strip--strip_html--strip_newlines">lstrip | rstrip | strip | strip_html | strip_newlines</h4>
+
+<p>trim 역할을 한다.</p>
+
+<p>왼쪽 공백을 제거한다.</p>
+
+<p><code class="highlighter-rouge">{{ "    blank    " | lstrip }}</code> -&gt; <code class="highlighter-rouge">blank   </code></p>
+
+<p>오른쪽 공백을 제거한다.</p>
+
+<p><code class="highlighter-rouge">{{ "    blank    " | lstrip }}</code> -&gt; <code class="highlighter-rouge">   blank</code></p>
+
+<p>양쪽 공백을 제거한다.</p>
+
+<p><code class="highlighter-rouge">{{ "    blank    " | strip }}</code> -&gt; <code class="highlighter-rouge">blank</code></p>
+
+<p>html 요소를 제거한다.</p>
+
+<p><code class="highlighter-rouge">{{ "&lt;h1&gt;안녕&lt;/h1&gt;" | strip_html }}</code> -&gt; <code class="highlighter-rouge">안녕</code></p>
+
+<p>개행문자를 제거한다.</p>
+
+<p><code class="highlighter-rouge">{{ "&lt;h1&gt;안녕\n하세요&lt;/h1&gt;" | strip_html }}</code> -&gt; <code class="highlighter-rouge">안녕하세요</code></p>
+
+<h4 id="remove--remove_first--replace--replace_first">remove | remove_first | replace | replace_first</h4>
+
+<p>remove : 문자열 조회 후 제거 (substring) full match 상태가 아니어도 제거됨</p>
+
+<p>remove_first : 첫 대상만 제거</p>
+
+<p>replace : 교체하기, 작동기전은 remove 와 동일</p>
+
+<p>replace_first : 첫글자만 교체됨</p>
+
+<h4 id="slice--truncate--truncatewords">slice | truncate | truncatewords</h4>
+
+<p>slice : 잘려진 값을 반환한다.</p>
+
+<p>truncate : 특정 길이 수 이상 문자를 자른다. ( 말줄임 표시나 기타 언어로 대체가 가능하다 )</p>
+
+<p>truncatewords : 단어수로 자른다. word-wrap 이 유효한 상태가 된다.</p>
+
+<h4 id="url_decode--url_encode">url_decode | url_encode</h4>
+
+<p>url_decode : url decode를 수행해서 문자열을 파싱한다.</p>
+
+<p>url_encode : 문자열을 인코드한다.</p>
+
+<h3 id="태그-관련">태그 관련</h3>
+
+<h4 id="escape--escape_once--newline_to_br">escape | escape_once | newline_to_br</h4>
+
+<p>escape : 대체 문구 표현 대표적으로 &amp; 을 &amp;</p>
+
+<p>escape_once : escape의 역이다</p>
+
+<p>newline_to_br : 개행문자에 br 태그를 추가해준다.</p>
+
+<h3 id="느낀점">느낀점</h3>
+
+<p>전체적으로는 최근 유행하는 node나 ruby 등과 같이 메소드명이 일치하고 명칭자체가 간단하고 직접적이었기 때문에</p>
+
+<p>처음 사용함에도 불구하고 매우 쉽게 이해할 수 있었다.</p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/';
+      this.page.identifier = 'http://localhost:4000/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/liquid/2019/12/19/Liquid-Filter-%EC%99%84%EB%B2%BD-%EB%B6%84%EC%84%9D/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ 블로그 만들기 - 3 ] DISQUS를 이용한 댓글 기능 달기 | 서보 블로그</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ 블로그 만들기 - 3 ] DISQUS를 이용한 댓글 기능 달기" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="DISQUS 소개" />
+<meta property="og:description" content="DISQUS 소개" />
+<link rel="canonical" href="http://localhost:4000/article/blog/2019/09/24/disqus/" />
+<meta property="og:url" content="http://localhost:4000/article/blog/2019/09/24/disqus/" />
+<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-24T01:58:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/blog/2019/09/24/disqus/","headline":"[ 블로그 만들기 - 3 ] DISQUS를 이용한 댓글 기능 달기","dateModified":"2019-09-24T01:58:00+09:00","datePublished":"2019-09-24T01:58:00+09:00","description":"DISQUS 소개","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/blog/2019/09/24/disqus/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // for( $i=0; $i<60; $i++) {
+        //     $('.meter').append('<li></li>');
+        // }
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        $(".top").click(function () {
+            // $(".full-menu").addClass('full-menu-active');
+            window.location.href = '/';
+
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.full-menu {
+    transform: scale(0);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 70, 142, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+}
+.full-menu-active {
+    display: block;
+    transform:rotate(180);
+    transform: scale(1);
+}
+</style>
+<div class="full-menu">
+    <div class="wrapper">
+        <div class="info">
+            <h1>은하수를 여행하는 개발자 되기</h1>
+            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
+            <p>시각적인 부분에 관심이 많다.</p>
+        </div>
+        <div class="category">
+            <ul>
+                <h1>Web</h1>
+                <li>Javascript</li>
+                <li>Framework</li>
+                <li></li>
+            </ul>
+            <ul>
+                <h1>Design</h1>
+                <li>Illust</li>
+                <li>UI/UX</li>
+            </ul>
+            <ul>
+                <h1>ML</h1>
+                <li>Algorithm</li>
+            </ul>
+            <ul>
+                <h1>DataScience</h1>
+                <li>R</li>
+            </ul>
+
+        </div>
+    </div>
+    카테고리
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ 블로그 만들기 - 3 ] DISQUS를 이용한 댓글 기능 달기" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/disqus.jpg" />
+<meta property="og:description" content="서보 블로그 | 은하수를 여행하는 개발자되기" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ 블로그 만들기 - 3 ] DISQUS를 이용한 댓글 기능 달기</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-09-24T01:58:00+09:00" itemprop="datePublished">
+          Sep 24, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/disqus.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#disqus-소개">DISQUS 소개</a></li>
+<li class="toc-entry toc-h2"><a href="#계정만들기">계정만들기</a></li>
+<li class="toc-entry toc-h2"><a href="#jekyll-에서의-설치">Jekyll 에서의 설치</a></li>
+<li class="toc-entry toc-h2"><a href="#한글-소스-이슈">한글 소스 이슈</a></li>
+<li class="toc-entry toc-h2"><a href="#완성">완성</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="disqus-소개">DISQUS 소개</h2>
+
+<p>DISQUS 는 댓글 모듈을 따로 구축할 필요 없이 위젯 형태로 서비스하는 서드파티 플러그인입니다.</p>
+
+<p><a href="https://disqus.com" target="_blank">https://disqus.com</a></p>
+
+<p>한국에 있는 서비스로 라이브리라는 서비스도 있습니다.
+<a href="https://www.livere.com" target="_blank">https://www.livere.com</a></p>
+
+<p>채널 - 쇼핑몰등에에 사용되는 상담용 채팅 위젯
+<a href="https://channel.io" target="_blank">https://channel.io</a></p>
+
+<p>구동 소스는 원격지에 있고</p>
+
+<p>해당 모듈을 iframe 형태로 임포트 시키거나 외부 JS파일을 통해 엘리먼트를 생성하는 구조로 되어있습니다.</p>
+
+<h2 id="계정만들기">계정만들기</h2>
+
+<p>설치방법은 매우 간단합니다.</p>
+
+<p>DISQUS 홈페이지에 접속해 계정을 만듭니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus0.jpg" alt="스크린샷" /></p>
+
+<p>두가지 선택지가 나오는데요 위쪽은 채팅형 모듈인것 같습니다.</p>
+
+<p>두번째 <strong>install Disqus on my site</strong> 를 선택합니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus2.jpg" alt="스크린샷" /></p>
+
+<p>플랜을 선택하라고 나오는데요. Plus와 Pro 두가지 모두 유료 플랜입니다.</p>
+
+<p>Plus의 경우 데일리뷰가 5만건 이하인경우 1달 서비스 이용로가 $10 정도 청구 되는데요.</p>
+
+<p>제 블로그도 페이지뷰가 많아져서 유료플러그인으로 넘어갈 날이 올 수 있기를 희망합니다. 가능할까요? ㅎㅎ 아직 큰 기대는 없습니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus3.jpg" alt="스크린샷" /></p>
+
+<p>우선은 하단에 Basic 플랜을 선택합니다.</p>
+
+<p>무료플랜을 하단쪽에 배치에서 시선 흐름을 나중으로 유도한 아이디어가 좋네요.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus4.jpg" alt="스크린샷" /></p>
+
+<p>타켓을 고를 수 있는데요. 많은 플랫폼에 적용가능 한것으로 나오네요.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus5.jpg" alt="스크린샷" /></p>
+
+<p>하지만 이 플러그인 아이콘들을 지나치고 하단에서 <strong>manually with Universal Code</strong> 를 선택해서 직접 소스 삽입으로 갑니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus6.jpg" alt="스크린샷" /></p>
+
+<h2 id="jekyll-에서의-설치">Jekyll 에서의 설치</h2>
+
+<p>import 할 대상 소스는 공식 페이지에 설정부분에 나와있습니다.</p>
+
+<p>Jekyll 테마에 따라 disqus 삽입용 파일이 포함되어 있는 경우도 많습니다.</p>
+
+<p>없는 경우 별도의 html 파일을 만들어서 해당 코드를 복사해 넣어 줍니다.</p>
+
+<p>계정 AppID 는 _config.yml 에 변수로 넣어서 관리해주면 편리합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"disqus_thread"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+    <span class="kd">var</span> <span class="nx">disqus_config</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://localhost:4000/article/blog/2019/09/24/disqus/</span><span class="dl">'</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">identifier</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://localhost:4000/article/blog/2019/09/24/disqus/</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">);</span>
+
+      <span class="nx">s</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://laerdream-github-io.disqus.com/embed.js</span><span class="dl">'</span><span class="p">;</span>
+
+      <span class="nx">s</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">data-timestamp</span><span class="dl">'</span><span class="p">,</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+      <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nx">d</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+    <span class="p">})();</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;noscript&gt;</span>Please enable JavaScript to view the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://disqus.com/?ref_noscript"</span> <span class="na">rel=</span><span class="s">"nofollow"</span><span class="nt">&gt;</span>comments powered by Disqus.<span class="nt">&lt;/a&gt;&lt;/noscript&gt;</span>
+</code></pre></div></div>
+
+<h2 id="한글-소스-이슈">한글 소스 이슈</h2>
+
+<p>지원 언어에 한글이 없습니다. 더 소수언어들도 있는데 한국을 왜 배제하게 된 것일까요</p>
+
+<p>다른 분들의 이야기를 들어보니 과거에는 있었다고 하네요.</p>
+
+<p>블로거 분들중에 브라우저 개발자모드로 selector 를 임의생성해서 ‘ko’ 밸류를 넘기는 아이디어를 제시해주신 분이 있었습니다.</p>
+
+<p>DOLOLAK님의 블로그
+<a href="https://dololak.tistory.com/663" target="_blank">https://dololak.tistory.com/663</a></p>
+
+<p>따라하니까 정말 한글로 들어오는데 그럼 프론트에서만 한글을 날렸다는 이야기네요.</p>
+
+<p>착오인지 정책적인 결정인지 궁금합니다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus7.jpg" alt="스크린샷" /></p>
+
+<h2 id="완성">완성</h2>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-09-24/2019-09-24-disqus8.jpg" alt="스크린샷" /></p>
+
+    </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/blog/2019/09/24/disqus/';
+      this.page.identifier = 'http://localhost:4000/article/blog/2019/09/24/disqus/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<a class="u-url" href="/article/blog/2019/09/24/disqus/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">서보 블로그</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>
