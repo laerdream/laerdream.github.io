@@ -19,8 +19,8 @@ gem "minima", "~> 2.5"
 # gem "github-pages", group: :jekyll_plugins
 # If you have any plugins, put them here!
 
-gem "jekyll-toc"
-gem "rack", ">= 1.6.12"
+# gem "jekyll-toc"
+# gem "rack", ">= 1.6.12"
 
 
 group :jekyll_plugins do
