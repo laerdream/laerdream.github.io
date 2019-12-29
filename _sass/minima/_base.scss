@@ -277,8 +277,10 @@ table {
 .section-nav {
   padding: 0px;
   margin: 15px 0px;
-  width: 300px;
+  width: 100%;
   padding: 20px;
+  background-color: #F7F7F7;
+  border-radius: 8px;
   ul {
     margin: 0px;
   }
@@ -289,9 +291,8 @@ table {
     list-style: none;
     a {
       display: inline-block;
-      border-bottom: 1px solid #DDD;
       padding: 5px 0px;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
   .toc-h3 {
@@ -299,7 +300,7 @@ table {
     margin: 0px;
     list-style: none;
     a {
-      font-size: 14px;
+      font-size: 12px;
       border-bottom: none;
     }
   }
