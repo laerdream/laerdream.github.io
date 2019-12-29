@@ -20,7 +20,7 @@ gem "minima", "~> 2.5"
 # If you have any plugins, put them here!
 
 gem "jekyll-toc"
-
+gem "rack", ">= 1.6.12"
 
 
 group :jekyll_plugins do
