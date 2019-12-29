@@ -5,7 +5,7 @@ title      : "[ HTTP ] HTTP 상태 코드"
 date       : 2019-12-28 19:30:00 +0900
 categories : article Web
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/http.jpg
-tags       : [Http, Web, Transport]
+tags       : [HTTP, Web]
 ---
 
 ## 관련문서

@@ -5,7 +5,7 @@ title      : "[ Ionic ] ios 빌드 실패 Cannot read property 'toLowerCase' of 
 date       : 2019-09-30 11:40:00 +0900
 categories : article Solve
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/ionicV4.jpg
-tags       : [Web,Ionic,HybridApp]
+tags       : [Web,Ionic]
 ---
 
 

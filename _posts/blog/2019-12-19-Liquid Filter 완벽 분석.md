@@ -5,7 +5,7 @@ title      : "[ Liquid ] Liquid Filter 완벽 분석"
 date       : 2019-12-19 11:40:00 +0900
 categories : article liquid
 cover      : https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/liquid.jpg
-tags       : [Liquid,jekyll,Blog]
+tags       : [Liquid,Jekyll,Blog]
 ---
 
 

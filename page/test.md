@@ -1,7 +1,5 @@
 ---
 layout: test
 title: About
-permalink: /test/
+permalink: /test1/
 ---
-
-테스트
