@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ AWS ] Route 53 외부 도메인 등록 | 네오플랫</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ AWS ] Route 53 외부 도메인 등록" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="은하수를 여행하는 개발자의 연구소" />
+<meta property="og:description" content="은하수를 여행하는 개발자의 연구소" />
+<link rel="canonical" href="http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/" />
+<meta property="og:url" content="http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/" />
+<meta property="og:site_name" content="네오플랫" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-25T11:55:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/","headline":"[ AWS ] Route 53 외부 도메인 등록","dateModified":"2019-11-25T11:55:00+09:00","datePublished":"2019-11-25T11:55:00+09:00","description":"은하수를 여행하는 개발자의 연구소","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    function toHome() {
+        window.location.href = '/';
+    }
+    $(document).ready(function () {
+        // 헤더 마우스 오버
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        // 메뉴 활성
+        $(".top").click(function () {
+            $('body').addClass('fixed');
+            $(".full-menu-bg").fadeIn();
+            $(".full-menu").addClass('full-menu-active');
+            // window.location.href = '/';
+        });
+        $(".full-menu-bg").click(function () {
+            $(".full-menu-bg").fadeOut();
+            $('body').removeClass('fixed');
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.full-menu-bg {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    z-index: 1000;
+}
+.full-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    height: 100vh;
+    margin-left: -300px;
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+    z-index: 1100;
+    /* background-color: #FFF; */
+    background-color: #5d468e;
+    color: #FFF;
+
+    -webkit-transform: translateZ(0);
+	transform: translateZ(0);
+
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+.full-menu-active {
+    margin-left: 0px;
+}
+.full-menu .inner {
+    padding: 30px;
+}
+.full-menu {
+    font-size: 14px;
+    word-break: keep-all;
+}
+.full-menu .info h1 {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 35px;
+    color: #f9f300;
+}
+.full-menu .info h2 {
+    font-weight: 700;
+    font-size: 28px;
+    cursor: pointer;
+}
+.category {
+    font-size: 13px;
+}
+.category h2 {
+    font-size: 18px;
+    margin: 25px 0px 5px 0px !important;
+    cursor: default;
+}
+.category ul {
+    margin: 0px;
+}
+.category ul li {
+    margin: 0px;
+    list-style: none;
+}
+</style>
+<div class="full-menu-bg"></div>
+<div class="full-menu">
+    <div class="inner">
+        <div class="info">
+            <h1 onclick="toHome()">취미과다 개발자의 연구소</h1>
+            <h2 onclick="toHome()">네오플랫</h2>
+            <h3><a href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></h3>
+
+            <p class="feed-subscribe">
+                <a href="/feed.xml">
+                   <svg class="svg-icon orange"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg><span> RSS 구독</span>
+                 </a>
+             </p>
+        </div>
+
+        <!-- <ul>
+            <li>소개</li>
+            <li>아카이브</li>
+            <li>연도별</li>
+            <li>태그</li>
+        </ul> -->
+
+        <div class="category">
+            <ul>
+                <h2>Code</h2>
+                    <li><a href="/tag/Web">Web</a></li>
+                    <li><a href="/tag/Application">Application</a></li>
+                    <li><a href="/tag/Framework">Framework</a></li>
+            </ul>
+            <ul>
+                <h2>Design</h2>
+                    <li><a href="/tag/Illust">Illust</a></li>
+                    <li><a href="/tag/UI">UI/UX</a></li>
+            </ul>
+            <ul>
+                <h2>ML / DataScience</h2>
+                    <li><a href="/tag/Mathematics">Mathematics</a></li>
+                    <li><a href="/tag/Statistics">Statistics</a></li>
+                    <li><a href="/tag/Algorithm">Algorithm</a></li>
+            </ul>
+            <ul>
+                <h2>Life</h2>
+                    <li><a href="/tag/Language">Language</a></li>
+                    <li><a href="/tag/Input">Input</a></li>
+                    <li><a href="/tag/‎Output">‎Output</a></li>
+            </ul>
+        </div>
+    </div>
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ AWS ] Route 53 외부 도메인 등록" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/aws.jpg" />
+<meta property="og:description" content="네오플랫 | 취미과다형 개발자 연구소" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ AWS ] Route 53 외부 도메인 등록</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-11-25T11:55:00+09:00" itemprop="datePublished">
+          Nov 25, 2019
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/aws.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#route-53-이란-무엇인가">Route 53 이란 무엇인가?</a></li>
+<li class="toc-entry toc-h2"><a href="#특징">특징</a></li>
+<li class="toc-entry toc-h2"><a href="#외부-도메인-연결하기">외부 도메인 연결하기</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#1-도메인-구입하기">1. 도메인 구입하기</a></li>
+<li class="toc-entry toc-h3"><a href="#2-route53-호스팅-영역-등록">2. Route53 호스팅 영역 등록</a></li>
+<li class="toc-entry toc-h3"><a href="#3-도메인-구입처로-돌아가서-네임서버를-변경한다">3. 도메인 구입처로 돌아가서 네임서버를 변경한다</a></li>
+<li class="toc-entry toc-h3"><a href="#4-a-타입-레코트-세트를-생성한다">4. A 타입 레코트 세트를 생성한다</a></li>
+<li class="toc-entry toc-h3"><a href="#5-cname-레코드-세트를-생성한다">5. CNAME 레코드 세트를 생성한다</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#용어-설명">용어 설명</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cname">CNAME</a></li>
+<li class="toc-entry toc-h3"><a href="#a-record">A Record</a></li>
+</ul>
+</li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-26/2019-11-26-0.png" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-26/2019-11-26-0.png" /></p>
+
+<h2 id="route-53-이란-무엇인가">Route 53 이란 무엇인가?</h2>
+<p>AWS 도메인네임 시스템이다. 즉 아마존에서 제공하는 Domain Name System (DNS) 웹 서비스이다.
+UDP, TCP 포트번호 53번에서 유래하였다고도 한다. 그냥 DNS라고 해도 될텐데 S3와 마찬가지로 뭔가 AWS만의 감성..인가
+마치 도로명 처럼 느껴지기도 한다.</p>
+
+<h2 id="특징">특징</h2>
+<p>관리형 서비스답게 도메인 등록이나 DNS연결, 트래픽 관리등을 GUI 형태로 제공한다. 사용법이 매우 간단한 편이다.</p>
+
+<h2 id="외부-도메인-연결하기">외부 도메인 연결하기</h2>
+
+<h3 id="1-도메인-구입하기">1. 도메인 구입하기</h3>
+<p>무료도메인 제공 업체도 많지만 주소가 한정적이기때문에
+원하는 도메인주소를 고대디나 가비아 등 대행업체를 통해서 도메인을 구입해서 사용하는게 좋다.</p>
+
+<h3 id="2-route53-호스팅-영역-등록">2. Route53 호스팅 영역 등록</h3>
+<p>구입한 도메인을 등록하고 할당받은 네임서버 주소를 확인한다</p>
+
+<h3 id="3-도메인-구입처로-돌아가서-네임서버를-변경한다">3. 도메인 구입처로 돌아가서 네임서버를 변경한다</h3>
+<p>구입한 사이트 마다 네임서버 변경방식은 조금씩 다르다. 최악의 경우 메일을 통해 네임서버 변경을 요청해야하는 경우도 있다.</p>
+
+<h3 id="4-a-타입-레코트-세트를-생성한다">4. A 타입 레코트 세트를 생성한다</h3>
+<p>IP주소를 도메인으로 변환해 주는 역할
+도메인을 입력하고 EC2 Public IP를 입력한다.</p>
+
+<h3 id="5-cname-레코드-세트를-생성한다">5. CNAME 레코드 세트를 생성한다</h3>
+<p>www / api / admin 등 필요한 서브 도메인들 할당하기</p>
+
+<h2 id="용어-설명">용어 설명</h2>
+
+<h3 id="cname">CNAME</h3>
+<p>Canonical Name 줄임말로
+도메인에 다른 이름을 붙이는 용도로 사용된다. 보통 maps.google.com / www.google.com 등의 방식으로 많이 사용한다.</p>
+
+<h3 id="a-record">A Record</h3>
+<p>Address Record 라고 하며 도메인이름에 IP주소를 매핑시킬 때 사용한다.
+google.com =&gt; 216.58.197.142 (IPv4 경우)</p>
+
+    </div><div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/';
+      this.page.identifier = 'http://localhost:4000/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><a class="u-url" href="/article/aws/2019/11/25/AWS-Route53%EB%8F%84%EB%A9%94%EC%9D%B8%EB%93%B1%EB%A1%9D/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">네오플랫</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자의 연구소</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

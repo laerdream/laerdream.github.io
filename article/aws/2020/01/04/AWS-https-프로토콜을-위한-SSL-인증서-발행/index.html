@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>[ AWS ] https 프로토콜을 위한 SSL 인증서 발급 | 네오플랫</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Certificat Manager 를 통한 인증서 발급" />
+<meta property="og:description" content="Certificat Manager 를 통한 인증서 발급" />
+<link rel="canonical" href="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" />
+<meta property="og:url" content="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" />
+<meta property="og:site_name" content="네오플랫" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-04T11:55:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/","headline":"[ AWS ] https 프로토콜을 위한 SSL 인증서 발급","dateModified":"2020-01-04T11:55:00+09:00","datePublished":"2020-01-04T11:55:00+09:00","description":"Certificat Manager 를 통한 인증서 발급","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    function toHome() {
+        window.location.href = '/';
+    }
+    $(document).ready(function () {
+        // 헤더 마우스 오버
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        // 메뉴 활성
+        $(".top").click(function () {
+            $('body').addClass('fixed');
+            $(".full-menu-bg").fadeIn();
+            $(".full-menu").addClass('full-menu-active');
+            // window.location.href = '/';
+        });
+        $(".full-menu-bg").click(function () {
+            $(".full-menu-bg").fadeOut();
+            $('body').removeClass('fixed');
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.full-menu-bg {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    z-index: 1000;
+}
+.full-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    height: 100vh;
+    margin-left: -300px;
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+    z-index: 1100;
+    /* background-color: #FFF; */
+    background-color: #5d468e;
+    color: #FFF;
+
+    -webkit-transform: translateZ(0);
+	transform: translateZ(0);
+
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+.full-menu-active {
+    margin-left: 0px;
+}
+.full-menu .inner {
+    padding: 30px;
+}
+.full-menu {
+    font-size: 14px;
+    word-break: keep-all;
+}
+.full-menu .info h1 {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 35px;
+    color: #f9f300;
+}
+.full-menu .info h2 {
+    font-weight: 700;
+    font-size: 28px;
+    cursor: pointer;
+}
+.category {
+    font-size: 13px;
+}
+.category h2 {
+    font-size: 18px;
+    margin: 25px 0px 5px 0px !important;
+    cursor: default;
+}
+.category ul {
+    margin: 0px;
+}
+.category ul li {
+    margin: 0px;
+    list-style: none;
+}
+</style>
+<div class="full-menu-bg"></div>
+<div class="full-menu">
+    <div class="inner">
+        <div class="info">
+            <h1 onclick="toHome()">취미과다 개발자의 연구소</h1>
+            <h2 onclick="toHome()">네오플랫</h2>
+            <h3><a href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></h3>
+
+            <p class="feed-subscribe">
+                <a href="/feed.xml">
+                   <svg class="svg-icon orange"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg><span> RSS 구독</span>
+                 </a>
+             </p>
+        </div>
+
+        <!-- <ul>
+            <li>소개</li>
+            <li>아카이브</li>
+            <li>연도별</li>
+            <li>태그</li>
+        </ul> -->
+
+        <div class="category">
+            <ul>
+                <h2>Code</h2>
+                    <li><a href="/tag/Web">Web</a></li>
+                    <li><a href="/tag/Application">Application</a></li>
+                    <li><a href="/tag/Framework">Framework</a></li>
+            </ul>
+            <ul>
+                <h2>Design</h2>
+                    <li><a href="/tag/Illust">Illust</a></li>
+                    <li><a href="/tag/UI">UI/UX</a></li>
+            </ul>
+            <ul>
+                <h2>ML / DataScience</h2>
+                    <li><a href="/tag/Mathematics">Mathematics</a></li>
+                    <li><a href="/tag/Statistics">Statistics</a></li>
+                    <li><a href="/tag/Algorithm">Algorithm</a></li>
+            </ul>
+            <ul>
+                <h2>Life</h2>
+                    <li><a href="/tag/Language">Language</a></li>
+                    <li><a href="/tag/Input">Input</a></li>
+                    <li><a href="/tag/‎Output">‎Output</a></li>
+            </ul>
+        </div>
+    </div>
+</div><main class="page-content" aria-label="Content">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
+
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/aws.jpg" />
+<meta property="og:description" content="네오플랫 | 취미과다형 개발자 연구소" />
+<meta property="og:type" content="article" />
+
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ AWS ] https 프로토콜을 위한 SSL 인증서 발급</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2020-01-04T11:55:00+09:00" itemprop="datePublished">
+          Jan 4, 2020
+        </time>
+    </div>
+  </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/aws.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#certificat-manager-를-통한-인증서-발급">Certificat Manager 를 통한 인증서 발급</a></li>
+<li class="toc-entry toc-h2"><a href="#인증서-발급">인증서 발급</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#1-dns-검증을-하는-경우">1. DNS 검증을 하는 경우</a></li>
+<li class="toc-entry toc-h3"><a href="#2-이메일-검증을-하는-경우">2. 이메일 검증을 하는 경우</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#로드-밸런스-설정">로드 밸런스 설정</a></li>
+<li class="toc-entry toc-h2"><a href="#route-53-설정">Route 53 설정</a></li>
+<li class="toc-entry toc-h2"><a href="#마치며">마치며</a></li>
+</ul>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="certificat-manager-를-통한-인증서-발급">Certificat Manager 를 통한 인증서 발급</h2>
+
+<p>AWS 서비스중 Certificate Manager 라는 서비스를 제공한다.</p>
+
+<p>다른 사설 업체는 인증서 발급을 하는데 적게는 2-3만원에서 많게는 10만원 15만원의 비용을 청구하는데 비해서</p>
+
+<p>아마존의 경우는 인증서를 무료로 발급해준다.</p>
+
+<p>다만 불편한점은 발행유효기간이 1년뿐이라 직접 매년 갱신해주어야 한다는 점이다.</p>
+
+<p>보안적으로는 더 유리할 수 있지만 아무래도 귀찮은건 사실인 것 같다. 공인인증서처럼 생각하고 매년 갱신한다고 마음먹고 쓰면 좋을 것 같다.</p>
+
+<h2 id="인증서-발급">인증서 발급</h2>
+
+<p>인증서 요청 메뉴 -&gt; 공인 인증서 요청을 선택한다.</p>
+
+<p>도메인을 입력하고 순서대로 따라간다.</p>
+
+<p>한 인증서에 서브 도메인들을 동시에 인증받을 수 있다.</p>
+
+<p>www.도메인, admin.도메인, api.도메인 등 얼마든지 가능하고</p>
+
+<p>또한 Asterisk 마크를 사용해서 와일드카드 인증서 역시 생성가능하다.</p>
+
+<p>예를 들어 *.도메인 같은 형태이다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-0.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-0.jpg" /></p>
+
+<h3 id="1-dns-검증을-하는-경우">1. DNS 검증을 하는 경우</h3>
+
+<p>DNS 구성파일을 내보내는 경우 DNS_Configuration.csv 파일을 단우로드 받아서</p>
+
+<p>Record Name과 Record Value를 확인한 후 CNAME 을 하나 더 추가해주면 인증이 완료 된다.</p>
+
+<p>인증 후 CNAME은 삭제 해도 무방하다.</p>
+
+<h3 id="2-이메일-검증을-하는-경우">2. 이메일 검증을 하는 경우</h3>
+
+<p>계정에 등록된 이메일로 승인 메일이 발송된다.</p>
+
+<p>도메인 설정에 경험이 많이 없는 경우 이 방식이 조금 더 간편할 수 있다.</p>
+
+<p>하지만 이메일 로그인 자체를 귀찮아 하는 경우도 있기 때문에 두 가지 방법 중 선호하는 방식으로 진행하면 되겠다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-1.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-1.jpg" /></p>
+
+<h2 id="로드-밸런스-설정">로드 밸런스 설정</h2>
+
+<p>로드 밸런스의 필요성과 설정에 대해서는 다른 글을 통해 다시 다루겠지만 사실 로드 밸런스를 위한 복수의 인스턴스를 사용하지 않는</p>
+
+<p>상황에서도 미래의 상황을 대비해서 미리 도메인을 로드 밸런스 DNS 로 연결해 두는 점이 나중을 위해 낫다고 생각한다.</p>
+
+<p>EC2 서비스로 돌아가서 보안그룹에 HTTPS 프로토콜을 허용하고 로드 밸런스에도 확장된 보안그룹을 설정해준다.</p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-2.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-2.jpg" /></p>
+
+<p><img src="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-3.jpg" alt="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2020-01-04/ssl-3.jpg" /></p>
+
+<h2 id="route-53-설정">Route 53 설정</h2>
+
+<p>Route 53 에서 www.도메인 과 같은 서브 도메인은 CNAME으로 같은 도메인을 바라보게 설정하고</p>
+
+<p>나머지 프론트 페이지 또는 백엔드프로세스 등은 각각 생성한 로드밸런스 주소로 A 레코드 값을 변경해준다.</p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>이렇게 하는 이유는 https 프로토콜에서는 Cross origin 설정이 별도로 되어있지 않은 일반적인 통신의 경우 반드시 https 프로토콜의 통신만을 허용하기 때문이다.</p>
+
+<p>최근 안드로이드 정책도 변경됨에 따라서 https는 선택사양이 아닌 필수가 되었다고 생각한다.</p>
+
+<p>이렇게 하면 쉽게 AWS https 통신을 위한 SSL 인증서 발급 및 도메인 연결을 완료 할 수 있다.</p>
+
+    </div><div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/';
+      this.page.identifier = 'http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><a class="u-url" href="/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" hidden></a>
+  </article>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">네오플랫</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자의 연구소</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>

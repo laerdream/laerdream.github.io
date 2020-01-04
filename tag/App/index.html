@@ -6,19 +6,19 @@
 
   <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
   <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>서보 블로그 | 은하수를 여행하는 개발자</title>
+<title>네오플랫 | 은하수를 여행하는 개발자의 연구소</title>
 <meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="서보 블로그" />
+<meta property="og:title" content="네오플랫" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="은하수를 여행하는 개발자" />
-<meta property="og:description" content="은하수를 여행하는 개발자" />
+<meta name="description" content="은하수를 여행하는 개발자의 연구소" />
+<meta property="og:description" content="은하수를 여행하는 개발자의 연구소" />
 <link rel="canonical" href="http://localhost:4000/tag/App/" />
 <meta property="og:url" content="http://localhost:4000/tag/App/" />
-<meta property="og:site_name" content="서보 블로그" />
+<meta property="og:site_name" content="네오플랫" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/tag/App/","headline":"서보 블로그","description":"은하수를 여행하는 개발자","@type":"WebPage","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/tag/App/","headline":"네오플랫","description":"은하수를 여행하는 개발자의 연구소","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="서보 블로그" /></head>
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -31,10 +31,11 @@
 </div>
 
 <script>
+    function toHome() {
+        window.location.href = '/';
+    }
     $(document).ready(function () {
-        // for( $i=0; $i<60; $i++) {
-        //     $('.meter').append('<li></li>');
-        // }
+        // 헤더 마우스 오버
         $(".top").mouseenter(function () {
             $(".meter-wrap").addClass('meter-wrap-hover');
         });
@@ -42,12 +43,16 @@
             $(".meter-wrap").removeClass('meter-wrap-hover');
         });
 
+        // 메뉴 활성
         $(".top").click(function () {
-            // $(".full-menu").addClass('full-menu-active');
-            window.location.href = '/';
-
+            $('body').addClass('fixed');
+            $(".full-menu-bg").fadeIn();
+            $(".full-menu").addClass('full-menu-active');
+            // window.location.href = '/';
         });
-        $(".full-menu").click(function () {
+        $(".full-menu-bg").click(function () {
+            $(".full-menu-bg").fadeOut();
+            $('body').removeClass('fixed');
             $(".full-menu").removeClass('full-menu-active');
         });
     });
@@ -80,83 +85,168 @@
 </script>
 
 <style>
-.full-menu {
-    transform: scale(0);
+.fixed {
     position: fixed;
-    z-index: 9999;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.full-menu-bg {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(93, 70, 142, 0.9);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    z-index: 1000;
+}
+.full-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    height: 100vh;
+    margin-left: -300px;
     top: 0px;
     left: 0px;
     transition: 0.3s;
+    z-index: 1100;
+    /* background-color: #FFF; */
+    background-color: #5d468e;
+    color: #FFF;
+
+    -webkit-transform: translateZ(0);
+	transform: translateZ(0);
+
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	perspective: 1000;
 }
 .full-menu-active {
-    display: block;
-    transform:rotate(180);
-    transform: scale(1);
+    margin-left: 0px;
+}
+.full-menu .inner {
+    padding: 30px;
+}
+.full-menu {
+    font-size: 14px;
+    word-break: keep-all;
+}
+.full-menu .info h1 {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 35px;
+    color: #f9f300;
+}
+.full-menu .info h2 {
+    font-weight: 700;
+    font-size: 28px;
+    cursor: pointer;
+}
+.category {
+    font-size: 13px;
+}
+.category h2 {
+    font-size: 18px;
+    margin: 25px 0px 5px 0px !important;
+    cursor: default;
+}
+.category ul {
+    margin: 0px;
+}
+.category ul li {
+    margin: 0px;
+    list-style: none;
 }
 </style>
+<div class="full-menu-bg"></div>
 <div class="full-menu">
-    <div class="wrapper">
+    <div class="inner">
         <div class="info">
-            <h1>은하수를 여행하는 개발자 되기</h1>
-            <h1>서보 | Mail : laerdream@gmail.com | Instagram : @heon4w</h1>
-            <p>시각적인 부분에 관심이 많다.</p>
+            <h1 onclick="toHome()">취미과다 개발자의 연구소</h1>
+            <h2 onclick="toHome()">네오플랫</h2>
+            <h3><a href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></h3>
+
+            <p class="feed-subscribe">
+                <a href="/feed.xml">
+                   <svg class="svg-icon orange"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg><span> RSS 구독</span>
+                 </a>
+             </p>
         </div>
+
+        <!-- <ul>
+            <li>소개</li>
+            <li>아카이브</li>
+            <li>연도별</li>
+            <li>태그</li>
+        </ul> -->
+
         <div class="category">
             <ul>
-                <h1>Web</h1>
-                <li>Javascript</li>
-                <li>Framework</li>
-                <li></li>
+                <h2>Code</h2>
+                    <li><a href="/tag/Web">Web</a></li>
+                    <li><a href="/tag/Application">Application</a></li>
+                    <li><a href="/tag/Framework">Framework</a></li>
             </ul>
             <ul>
-                <h1>Design</h1>
-                <li>Illust</li>
-                <li>UI/UX</li>
+                <h2>Design</h2>
+                    <li><a href="/tag/Illust">Illust</a></li>
+                    <li><a href="/tag/UI">UI/UX</a></li>
             </ul>
             <ul>
-                <h1>ML</h1>
-                <li>Algorithm</li>
+                <h2>ML / DataScience</h2>
+                    <li><a href="/tag/Mathematics">Mathematics</a></li>
+                    <li><a href="/tag/Statistics">Statistics</a></li>
+                    <li><a href="/tag/Algorithm">Algorithm</a></li>
             </ul>
             <ul>
-                <h1>DataScience</h1>
-                <li>R</li>
+                <h2>Life</h2>
+                    <li><a href="/tag/Language">Language</a></li>
+                    <li><a href="/tag/Input">Input</a></li>
+                    <li><a href="/tag/‎Output">‎Output</a></li>
             </ul>
-
         </div>
     </div>
-    카테고리
 </div><main class="page-content" aria-label="Content">
-        <ul class="posts-list">
+        <!--
+<ul class="posts-list">
 
   
-
-  <!-- {"Cook"=>[#<Jekyll::Document _posts/Cook/2019-09-14-cook-seaweedsoup.md collection=posts>], "macOS"=>[#<Jekyll::Document _posts/iOS/2019-09-14-ios-catalinaupdate.md collection=posts>], "Web"=>[#<Jekyll::Document _posts/Web/2019-12-28-httpstatuscode.md collection=posts>, #<Jekyll::Document _posts/Book/2019-11-22-웹엔지니어의교과서.md collection=posts>, #<Jekyll::Document _posts/Solve/2019-10-01-IonicV4-안드로이드글자확대.md collection=posts>, #<Jekyll::Document _posts/Solve/2019-09-30-IonicV4-ionicbuildios.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-24-disqus.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-21-favicon.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-19-jekyllstyle.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-16-searchengine.md collection=posts>], "SEO"=>[#<Jekyll::Document _posts/Blog/2019-09-16-searchengine.md collection=posts>], "Blog"=>[#<Jekyll::Document _posts/Blog/2019-12-19-Liquid Filter 완벽 분석.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-24-disqus.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-21-favicon.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-19-jekyllstyle.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-16-searchengine.md collection=posts>], "Jekyll"=>[#<Jekyll::Document _posts/Blog/2019-12-19-Liquid Filter 완벽 분석.md collection=posts>, #<Jekyll::Document _posts/Solve/2019-10-04-liquid행반환.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-19-jekyllstyle.md collection=posts>], "HTML"=>[#<Jekyll::Document _posts/Blog/2019-09-21-favicon.md collection=posts>], "NodeJS"=>[#<Jekyll::Document _posts/NodeJS/2019-12-18-노드서버에서 메일발송하기.md collection=posts>, #<Jekyll::Document _posts/NodeJS/2019-09-22-Multer 복수 필드 업로드.md collection=posts>], "BackEnd"=>[#<Jekyll::Document _posts/NodeJS/2019-09-22-Multer 복수 필드 업로드.md collection=posts>], "Plugin"=>[#<Jekyll::Document _posts/Web/2019-11-03-크롬플러그인추천.md collection=posts>, #<Jekyll::Document _posts/Blog/2019-09-24-disqus.md collection=posts>, #<Jekyll::Document _posts/NodeJS/2019-09-22-Multer 복수 필드 업로드.md collection=posts>], "Book"=>[#<Jekyll::Document _posts/Book/2019-11-22-웹엔지니어의교과서.md collection=posts>, #<Jekyll::Document _posts/Book/2019-09-26-아이디어가 고갈된 디자이너를 위한 책.md collection=posts>], "Design"=>[#<Jekyll::Document _posts/Design/2019-12-20-디자인리서치사이트.md collection=posts>, #<Jekyll::Document _posts/Book/2019-09-26-아이디어가 고갈된 디자이너를 위한 책.md collection=posts>], "Language"=>[#<Jekyll::Document _posts/Nihongo/2019-10-13-스터디정리.md collection=posts>, #<Jekyll::Document _posts/Nihongo/2019-09-29-스터디정리.md collection=posts>], "Japanese"=>[#<Jekyll::Document _posts/Nihongo/2019-10-13-스터디정리.md collection=posts>, #<Jekyll::Document _posts/Nihongo/2019-09-29-스터디정리.md collection=posts>], "JavaScript"=>[#<Jekyll::Document _posts/Javascript/2019-09-29-jqueryscroll.md collection=posts>], "CSS"=>[#<Jekyll::Document _posts/Javascript/2019-09-29-jqueryscroll.md collection=posts>], "Ionic"=>[#<Jekyll::Document _posts/Solve/2019-10-01-IonicV4-안드로이드글자확대.md collection=posts>, #<Jekyll::Document _posts/Solve/2019-09-30-IonicV4-ionicbuildios.md collection=posts>], "Liquid"=>[#<Jekyll::Document _posts/Blog/2019-12-19-Liquid Filter 완벽 분석.md collection=posts>, #<Jekyll::Document _posts/Solve/2019-10-04-liquid행반환.md collection=posts>], "Algorithm"=>[#<Jekyll::Document _posts/Algorithm/2019-10-29-후위표기식.md collection=posts>, #<Jekyll::Document _posts/Algorithm/2019-10-28-랜덤 알고리즘.md collection=posts>, #<Jekyll::Document _posts/Algorithm/2019-10-23-알고리즘의평가.md collection=posts>], "Ubuntu"=>[#<Jekyll::Document _posts/Linux/2019-10-04-우분투 한글폰트 설치.md collection=posts>], "Linux"=>[#<Jekyll::Document _posts/Linux/2019-11-28-표준시간.md collection=posts>, #<Jekyll::Document _posts/Linux/2019-10-30-리눅스시간확인.md collection=posts>, #<Jekyll::Document _posts/Linux/2019-10-04-우분투 한글폰트 설치.md collection=posts>], "Python"=>[#<Jekyll::Document _posts/Python/2019-11-03-Tkinter.md collection=posts>], "Tkinter"=>[#<Jekyll::Document _posts/Python/2019-11-03-Tkinter.md collection=posts>], "AWS"=>[#<Jekyll::Document _posts/AWS/2019-11-26-Route53도메인등록.md collection=posts>], "Android"=>[#<Jekyll::Document _posts/Android/2019-12-17-안드로이드9 HTTP 통신.md collection=posts>], "HTTP"=>[#<Jekyll::Document _posts/Web/2019-12-28-httpstatuscode.md collection=posts>, #<Jekyll::Document _posts/Android/2019-12-17-안드로이드9 HTTP 통신.md collection=posts>], "Security"=>[#<Jekyll::Document _posts/Android/2019-12-17-안드로이드9 HTTP 통신.md collection=posts>], "UI"=>[#<Jekyll::Document _posts/Design/2019-12-20-디자인리서치사이트.md collection=posts>], "Illust"=>[#<Jekyll::Document _posts/Design/2019-12-20-디자인리서치사이트.md collection=posts>]} -->
-
 
   <h2>건의 게시물</h2>
 
   
 
-</ul>
+</ul> -->
 
+<div class="wrapper">
+  <div class="home content">
+      <ul class="post-list">
+        
+
+        <h2>건의 게시물</h2>
+
+        </ul>
+  </div>
+</div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
-
   <div class="wrapper">
-
     <div class="footer-col-wrapper">
       <div class="footer-col one-half">
-      <h2 class="footer-heading">서보 블로그</h2>
+      <h2 class="footer-heading">네오플랫</h2>
         <ul class="contact-list">
           <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
       </div>
 
       <div class="footer-col one-half">
-        <p>은하수를 여행하는 개발자</p>
+        <p>은하수를 여행하는 개발자의 연구소</p>
         <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
       </div>
 
@@ -165,7 +255,6 @@
     </div>
 
   </div>
-
 </footer>
 <script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
   </body>

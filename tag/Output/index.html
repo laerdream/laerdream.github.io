@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
+  <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>네오플랫 | 은하수를 여행하는 개발자의 연구소</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="네오플랫" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="은하수를 여행하는 개발자의 연구소" />
+<meta property="og:description" content="은하수를 여행하는 개발자의 연구소" />
+<link rel="canonical" href="http://localhost:4000/tag/Output/" />
+<meta property="og:url" content="http://localhost:4000/tag/Output/" />
+<meta property="og:site_name" content="네오플랫" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/tag/Output/","headline":"네오플랫","description":"은하수를 여행하는 개발자의 연구소","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script><body><div class="top">
+    <div class="meter-wrap">
+        <ul class="meter"></ul>
+    </div>
+    <div class="process"></div>
+</div>
+
+<script>
+    function toHome() {
+        window.location.href = '/';
+    }
+    $(document).ready(function () {
+        // 헤더 마우스 오버
+        $(".top").mouseenter(function () {
+            $(".meter-wrap").addClass('meter-wrap-hover');
+        });
+        $(".top").mouseleave(function () {
+            $(".meter-wrap").removeClass('meter-wrap-hover');
+        });
+
+        // 메뉴 활성
+        $(".top").click(function () {
+            $('body').addClass('fixed');
+            $(".full-menu-bg").fadeIn();
+            $(".full-menu").addClass('full-menu-active');
+            // window.location.href = '/';
+        });
+        $(".full-menu-bg").click(function () {
+            $(".full-menu-bg").fadeOut();
+            $('body').removeClass('fixed');
+            $(".full-menu").removeClass('full-menu-active');
+        });
+    });
+
+    $(window).scroll(function() {
+        // 프로그레스 바 진행
+        var documentHeight = $(".page-content").height() - 800;
+        var scrollHeight = $(window).scrollTop();
+        var adjustedWidth = scrollHeight / documentHeight * 100;
+        $(".process").css('width', adjustedWidth + '%');
+
+        // Blur 필터
+        var originalFilterVal = 60;
+        var changedFilterVal = originalFilterVal - (scrollHeight * 0.3);
+        if (changedFilterVal < 0) {
+            changedFilterVal = 0;
+        }
+        var filterVal = 'blur('+ changedFilterVal +'px)';
+        console.log(filterVal);
+        $(".visual-wrap .visual")
+        .css('filter',filterVal)
+        .css('webkitFilter',filterVal)
+        .css('mozFilter',filterVal)
+        .css('oFilter',filterVal)
+        .css('msFilter',filterVal);
+    });
+
+
+
+</script>
+
+<style>
+.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.full-menu-bg {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(255, 255, 255, 0.6); */
+    z-index: 1000;
+}
+.full-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    height: 100vh;
+    margin-left: -300px;
+    top: 0px;
+    left: 0px;
+    transition: 0.3s;
+    z-index: 1100;
+    /* background-color: #FFF; */
+    background-color: #5d468e;
+    color: #FFF;
+
+    -webkit-transform: translateZ(0);
+	transform: translateZ(0);
+
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+.full-menu-active {
+    margin-left: 0px;
+}
+.full-menu .inner {
+    padding: 30px;
+}
+.full-menu {
+    font-size: 14px;
+    word-break: keep-all;
+}
+.full-menu .info h1 {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 35px;
+    color: #f9f300;
+}
+.full-menu .info h2 {
+    font-weight: 700;
+    font-size: 28px;
+    cursor: pointer;
+}
+.category {
+    font-size: 13px;
+}
+.category h2 {
+    font-size: 18px;
+    margin: 25px 0px 5px 0px !important;
+    cursor: default;
+}
+.category ul {
+    margin: 0px;
+}
+.category ul li {
+    margin: 0px;
+    list-style: none;
+}
+</style>
+<div class="full-menu-bg"></div>
+<div class="full-menu">
+    <div class="inner">
+        <div class="info">
+            <h1 onclick="toHome()">취미과다 개발자의 연구소</h1>
+            <h2 onclick="toHome()">네오플랫</h2>
+            <h3><a href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></h3>
+
+            <p class="feed-subscribe">
+                <a href="/feed.xml">
+                   <svg class="svg-icon orange"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg><span> RSS 구독</span>
+                 </a>
+             </p>
+        </div>
+
+        <!-- <ul>
+            <li>소개</li>
+            <li>아카이브</li>
+            <li>연도별</li>
+            <li>태그</li>
+        </ul> -->
+
+        <div class="category">
+            <ul>
+                <h2>Code</h2>
+                    <li><a href="/tag/Web">Web</a></li>
+                    <li><a href="/tag/Application">Application</a></li>
+                    <li><a href="/tag/Framework">Framework</a></li>
+            </ul>
+            <ul>
+                <h2>Design</h2>
+                    <li><a href="/tag/Illust">Illust</a></li>
+                    <li><a href="/tag/UI">UI/UX</a></li>
+            </ul>
+            <ul>
+                <h2>ML / DataScience</h2>
+                    <li><a href="/tag/Mathematics">Mathematics</a></li>
+                    <li><a href="/tag/Statistics">Statistics</a></li>
+                    <li><a href="/tag/Algorithm">Algorithm</a></li>
+            </ul>
+            <ul>
+                <h2>Life</h2>
+                    <li><a href="/tag/Language">Language</a></li>
+                    <li><a href="/tag/Input">Input</a></li>
+                    <li><a href="/tag/‎Output">‎Output</a></li>
+            </ul>
+        </div>
+    </div>
+</div><main class="page-content" aria-label="Content">
+        <!--
+<ul class="posts-list">
+
+  
+
+  <h2>건의 게시물</h2>
+
+  
+
+</ul> -->
+
+<div class="wrapper">
+  <div class="home content">
+      <ul class="post-list">
+        
+
+        <h2>건의 게시물</h2>
+
+        </ul>
+  </div>
+</div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col one-half">
+      <h2 class="footer-heading">네오플랫</h2>
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:laerdream@gmail.com">laerdream@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col one-half">
+        <p>은하수를 여행하는 개발자의 연구소</p>
+        <p><a href="https://www.instagram.com/heon4w/" target="_blank">Instagram @Heon4w</a></p>
+      </div>
+
+      <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+    </div>
+
+  </div>
+</footer>
+<script id="dsq-count-scr" src="//laerdream-github-io.disqus.com/count.js" async></script>
+  </body>
+
+</html>
