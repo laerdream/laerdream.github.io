@@ -34,6 +34,13 @@
     function toHome() {
         window.location.href = '/';
     }
+    function routerLink(link) {
+        $('body').removeClass('fixed');
+        $(".full-menu").removeClass('full-menu-active');
+        $(".full-menu-bg").fadeOut(400, function(){
+            window.location.href = link;
+        })
+    }
     $(document).ready(function () {
         // 헤더 마우스 오버
         $(".top").mouseenter(function () {
@@ -49,6 +56,11 @@
             $(".full-menu-bg").fadeIn();
             $(".full-menu").addClass('full-menu-active');
             // window.location.href = '/';
+        });
+        $(".full-menu").click(function () {
+            $(".full-menu-bg").fadeOut();
+            $('body').removeClass('fixed');
+            $(".full-menu").removeClass('full-menu-active');
         });
         $(".full-menu-bg").click(function () {
             $(".full-menu-bg").fadeOut();
@@ -98,7 +110,7 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     /* background-color: rgba(255, 255, 255, 0.6); */
     z-index: 1000;
 }
@@ -114,7 +126,7 @@
     transition: 0.3s;
     z-index: 1100;
     /* background-color: #FFF; */
-    background-color: #5d468e;
+    /* background-color: #5d468e; */
     color: #FFF;
 
     -webkit-transform: translateZ(0);
@@ -143,7 +155,7 @@
     font-weight: 700;
     cursor: pointer;
     font-size: 35px;
-    color: #f9f300;
+    color: #d7c4ff;
 }
 .full-menu .info h2 {
     font-weight: 700;
@@ -164,6 +176,9 @@
 .category ul li {
     margin: 0px;
     list-style: none;
+}
+.category ul li a {
+    cursor: pointer;
 }
 </style>
 <div class="full-menu-bg"></div>
@@ -190,27 +205,31 @@
 
         <div class="category">
             <ul>
+                    <li><a onclick="routerLink('/')">첫페이지로</a></li>
+                    <li><a onclick="routerLink('/')">소개</a></li>
+            </ul>
+            <ul>
                 <h2>Code</h2>
-                    <li><a href="/tag/Web">Web</a></li>
-                    <li><a href="/tag/Application">Application</a></li>
-                    <li><a href="/tag/Framework">Framework</a></li>
+                    <li><a onclick="routerLink('/tag/Web')">Web</a></li>
+                    <li><a onclick="routerLink('/tag/Application')">Application</a></li>
+                    <li><a onclick="routerLink('/tag/Framework')">Framework</a></li>
             </ul>
             <ul>
                 <h2>Design</h2>
-                    <li><a href="/tag/Illust">Illust</a></li>
-                    <li><a href="/tag/UI">UI/UX</a></li>
+                    <li><a onclick="routerLink('/tag/Illust')">Illust</a></li>
+                    <li><a onclick="routerLink('/tag/UI')">UI/UX</a></li>
             </ul>
             <ul>
                 <h2>ML / DataScience</h2>
-                    <li><a href="/tag/Mathematics">Mathematics</a></li>
-                    <li><a href="/tag/Statistics">Statistics</a></li>
-                    <li><a href="/tag/Algorithm">Algorithm</a></li>
+                    <li><a onclick="routerLink('/tag/Mathematics')">Mathematics</a></li>
+                    <li><a onclick="routerLink('/tag/Statistics')">Statistics</a></li>
+                    <li><a onclick="routerLink('/tag/Algorithm')">Algorithm</a></li>
             </ul>
             <ul>
                 <h2>Life</h2>
-                    <li><a href="/tag/Language">Language</a></li>
-                    <li><a href="/tag/Input">Input</a></li>
-                    <li><a href="/tag/‎Output">‎Output</a></li>
+                    <li><a onclick="routerLink('/tag/Language')">Language</a></li>
+                    <li><a onclick="routerLink('/tag/Input')">Input</a></li>
+                    <li><a onclick="routerLink('/tag/‎Output')">‎Output</a></li>
             </ul>
         </div>
     </div>
