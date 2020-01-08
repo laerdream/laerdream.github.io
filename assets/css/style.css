@@ -186,8 +186,9 @@ table {
 .section-nav {
   padding: 0px;
   margin: 15px 0px;
-  width: 100%;
   padding: 20px;
+  width: 100%;
+  width: calc(100% - 40px);
   background-color: #F7F7F7;
   border-radius: 8px; }
   .section-nav ul {
