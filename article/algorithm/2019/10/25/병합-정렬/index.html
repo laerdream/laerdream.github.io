@@ -6,17 +6,19 @@
 
   <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
   <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>About | 네오플랫</title>
+<title>[ Algorithm ] 병합정렬 (Merge sort) | 네오플랫</title>
 <meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="About" />
+<meta property="og:title" content="[ Algorithm ] 병합정렬 (Merge sort)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="취미과다 인간의 탐구생활" />
-<meta property="og:description" content="취미과다 인간의 탐구생활" />
-<link rel="canonical" href="http://localhost:4000/about/" />
-<meta property="og:url" content="http://localhost:4000/about/" />
+<meta name="description" content="병합 정렬 병합 정렬은 기본적으로 분할 및 정복 방식을 따르며" />
+<meta property="og:description" content="병합 정렬 병합 정렬은 기본적으로 분할 및 정복 방식을 따르며" />
+<link rel="canonical" href="http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/" />
+<meta property="og:url" content="http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/" />
 <meta property="og:site_name" content="네오플랫" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-10-25T01:05:00+09:00" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/about/","name":"네오플랫","headline":"About","description":"취미과다 인간의 탐구생활","@type":"WebSite","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/","headline":"[ Algorithm ] 병합정렬 (Merge sort)","dateModified":"2019-10-25T01:05:00+09:00","datePublished":"2019-10-25T01:05:00+09:00","description":"병합 정렬 병합 정렬은 기본적으로 분할 및 정복 방식을 따르며","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
 
@@ -236,25 +238,123 @@
         </div>
     </div>
 </div><main class="page-content" aria-label="Content">
-        <article class="post">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
 
-  <header class="post-header">
-    <h1 class="post-title">About</h1>
-  </header>
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Algorithm ] 병합정렬 (Merge sort)" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/algorithm.jpg" />
+<meta property="og:description" content="네오플랫 | 취미과다 인간의 탐구생활" />
+<meta property="og:type" content="article" />
 
-  <div class="post-content">
-    <p>안녕하세요.</p>
-
-<p>여러 분야에 흥미가 가득한 취미과다형 개발자입니다.</p>
-
-<p>댓글, 이메일을 통한 소통 언제든지 환영합니다.</p>
-
-<p>/</p>
-
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Algorithm ] 병합정렬 (Merge sort)</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2019-10-25T01:05:00+09:00" itemprop="datePublished">
+          Oct 25, 2019
+        </time>
+    </div>
   </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/algorithm.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#병합-정렬">병합 정렬</a></li>
+<li class="toc-entry toc-h2"><a href="#방법">방법</a></li>
+<li class="toc-entry toc-h2"><a href="#탐색시간">탐색시간</a></li>
+</ul>
+    </div>
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="병합-정렬">병합 정렬</h2>
+<p>병합 정렬은 기본적으로 분할 및 정복 방식을 따르며</p>
 
-</article>
+<p>정렬되지 않은 배열을 두개의 서브 배열로 분리하여 각 서브배열의 크기가 1이 될 떄까지 재귀적으로 분할하여 정렬하는 방식</p>
 
+<h2 id="방법">방법</h2>
+
+<p>서브 배열의 크기가 1이 되면 동등한 레벨에 위치하는 크기가 1인 서브 배열과 서로 순서를 정리하여 병합한다.</p>
+
+<p>배열의 길이가 0또는 1이 되면 이미 정렬된 것으로 판단한다.</p>
+
+<p>그렇지 않은 경우 정렬되지 않은 배열을 반으로 잘라 두 개의 서브 배열로 분리한다.</p>
+
+<h2 id="탐색시간">탐색시간</h2>
+
+<p>O(nlogn)</p>
+
+    </div><div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/';
+      this.page.identifier = 'http://localhost:4000/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><a class="u-url" href="/article/algorithm/2019/10/25/%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%AC/" hidden></a>
+  </article>
+</div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
   <div class="wrapper">
