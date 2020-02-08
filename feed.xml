@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-26T16:25:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">네오플랫</title><subtitle>취미과다 인간의 탐구생활</subtitle><entry><title type="html">[ AWS ] https 프로토콜을 위한 SSL 인증서 발급</title><link href="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" rel="alternate" type="text/html" title="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" /><published>2020-01-04T11:55:00+09:00</published><updated>2020-01-04T11:55:00+09:00</updated><id>http://localhost:4000/article/aws/2020/01/04/AWS-https%20%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84%20%EC%9C%84%ED%95%9C%20SSL%20%EC%9D%B8%EC%A6%9D%EC%84%9C%20%EB%B0%9C%ED%96%89</id><content type="html" xml:base="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/">&lt;h2 id=&quot;certificat-manager-를-통한-인증서-발급&quot;&gt;Certificat Manager 를 통한 인증서 발급&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-08T13:09:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">네오플랫</title><subtitle>취미과다 인간의 탐구생활</subtitle><entry><title type="html">[ AWS ] https 프로토콜을 위한 SSL 인증서 발급</title><link href="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" rel="alternate" type="text/html" title="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" /><published>2020-01-04T11:55:00+09:00</published><updated>2020-01-04T11:55:00+09:00</updated><id>http://localhost:4000/article/aws/2020/01/04/AWS-https%20%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84%20%EC%9C%84%ED%95%9C%20SSL%20%EC%9D%B8%EC%A6%9D%EC%84%9C%20%EB%B0%9C%ED%96%89</id><content type="html" xml:base="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/">&lt;h2 id=&quot;certificat-manager-를-통한-인증서-발급&quot;&gt;Certificat Manager 를 통한 인증서 발급&lt;/h2&gt;
 
 &lt;p&gt;AWS 서비스중 Certificate Manager 라는 서비스를 제공한다.&lt;/p&gt;
 
@@ -535,7 +535,33 @@ https://shopify.github.io/liquid/&lt;/p&gt;
 
 &lt;h2 id=&quot;참조&quot;&gt;참조&lt;/h2&gt;
 &lt;h3 id=&quot;android-developers-document&quot;&gt;Android Developers Document&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://android-developers.googleblog.com/2018/04/protecting-users-with-tls-by-default-in.html&quot; target=&quot;_blank&quot;&gt;https://android-developers.googleblog.com/2018/04/protecting-users-with-tls-by-default-in.html&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="Android" /><category term="HTTP" /><category term="Security" /><summary type="html">증상</summary></entry><entry><title type="html">[ Linux ] 표준시간 GMT, UTC, KST, JST</title><link href="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/" rel="alternate" type="text/html" title="[ Linux ] 표준시간 GMT, UTC, KST, JST" /><published>2019-11-28T11:40:00+09:00</published><updated>2019-11-28T11:40:00+09:00</updated><id>http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84</id><content type="html" xml:base="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/">&lt;h2 id=&quot;시차-및-시간-통일의-필요성&quot;&gt;시차 및 시간 통일의 필요성&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://android-developers.googleblog.com/2018/04/protecting-users-with-tls-by-default-in.html&quot; target=&quot;_blank&quot;&gt;https://android-developers.googleblog.com/2018/04/protecting-users-with-tls-by-default-in.html&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="Android" /><category term="HTTP" /><category term="Security" /><summary type="html">증상</summary></entry><entry><title type="html">[ 서버 ] 대용량 아키텍처와 성능튜닝</title><link href="http://localhost:4000/article/book/2019/12/04/%EB%8C%80%EC%9A%A9%EB%9F%89-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%99%80-%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D/" rel="alternate" type="text/html" title="[ 서버 ] 대용량 아키텍처와 성능튜닝" /><published>2019-12-04T11:55:00+09:00</published><updated>2019-12-04T11:55:00+09:00</updated><id>http://localhost:4000/article/book/2019/12/04/%EB%8C%80%EC%9A%A9%EB%9F%89%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%99%80%20%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D</id><content type="html" xml:base="http://localhost:4000/article/book/2019/12/04/%EB%8C%80%EC%9A%A9%EB%9F%89-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%99%80-%EC%84%B1%EB%8A%A5%ED%8A%9C%EB%8B%9D/">&lt;p&gt;&lt;img src=&quot;https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-12-04/8965400953_1.jpg&quot; alt=&quot;대용량 아키텍처와 성능튜닝&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;도서명&quot;&gt;도서명&lt;/h3&gt;
+
+&lt;p&gt;조대협의 서버 사이드 대용량 아키텍처와 성능 튜닝&lt;/p&gt;
+
+&lt;h3 id=&quot;저자-및-출판사&quot;&gt;저자 및 출판사&lt;/h3&gt;
+&lt;p&gt;조병욱 (조대협)&lt;/p&gt;
+
+&lt;p&gt;(주)프리렉
+1쇄 2015년 03월 18일
+3쇄 2017년 08월 14일&lt;/p&gt;
+
+&lt;h3 id=&quot;목차&quot;&gt;목차&lt;/h3&gt;
+
+&lt;p&gt;Part01 아키텍처 설계 방법
+Part02 레퍼런스 아키텍처
+Part03 대용량 아키텍처
+Part04 성능 엔지니어링&lt;/p&gt;
+
+&lt;h3 id=&quot;느낀점&quot;&gt;느낀점&lt;/h3&gt;
+
+&lt;p&gt;조대협님의 블로그를 보면서 나도 이런 멋진 아키텍처가 되고 싶다는 생각을 많이 하였다.&lt;/p&gt;
+
+&lt;p&gt;역시 다년간의 경험으로 정말 깊이 있는 내공이 뭍어나는 귀한 책이었다.&lt;/p&gt;
+
+&lt;p&gt;기술적인 측면 뿐만 아니라 개발자로서의 자세도 많이 배우게 된 것 같다.&lt;/p&gt;</content><author><name></name></author><category term="Book" /><summary type="html"></summary></entry><entry><title type="html">[ Linux ] 표준시간 GMT, UTC, KST, JST</title><link href="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/" rel="alternate" type="text/html" title="[ Linux ] 표준시간 GMT, UTC, KST, JST" /><published>2019-11-28T11:40:00+09:00</published><updated>2019-11-28T11:40:00+09:00</updated><id>http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84</id><content type="html" xml:base="http://localhost:4000/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/">&lt;h2 id=&quot;시차-및-시간-통일의-필요성&quot;&gt;시차 및 시간 통일의 필요성&lt;/h2&gt;
 &lt;p&gt;지구를 포함한 발견된 대부분은 행성은 원형이기때문에 자전축을 기준으로 시차가 발생한다.&lt;/p&gt;
 
 &lt;p&gt;이 시차로 인해서 해외 서비스의 경우 시간 계산의 번거로움이 발생하였다.&lt;/p&gt;
@@ -699,47 +725,4 @@ google.com =&amp;gt; 216.58.197.142 (IPv4 경우)&lt;/p&gt;</content><author><na
 6장 로그
 7장 데이터 시각화
 8장 환경 구축 자동화
-9장 편리한 외부 서비스&lt;/p&gt;</content><author><name></name></author><category term="Book" /><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">[ Tkinter ] 파이썬으로 데스크톱 앱 만들기</title><link href="http://localhost:4000/article/algorithm/2019/11/03/Tkinter/" rel="alternate" type="text/html" title="[ Tkinter ] 파이썬으로 데스크톱 앱 만들기" /><published>2019-11-03T06:35:00+09:00</published><updated>2019-11-03T06:35:00+09:00</updated><id>http://localhost:4000/article/algorithm/2019/11/03/Tkinter</id><content type="html" xml:base="http://localhost:4000/article/algorithm/2019/11/03/Tkinter/">&lt;h2 id=&quot;tkinter-란&quot;&gt;Tkinter 란?&lt;/h2&gt;
-&lt;p&gt;파이썬으로 데스크톱 UI를 표현할 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;느낌&quot;&gt;느낌&lt;/h2&gt;
-
-&lt;p&gt;계산기 형태 예제가 많은 곳에 올라와있다.&lt;/p&gt;
-
-&lt;p&gt;MacOS에서도 잘 실행된다.&lt;/p&gt;
-
-&lt;p&gt;프로파일설정등 없이 바로 실행되니 신기하다.&lt;/p&gt;
-
-&lt;p&gt;쓰기 편하고 재미있는것 같다.&lt;/p&gt;
-
-&lt;h2 id=&quot;문서&quot;&gt;문서&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.python.org/ko/3/library/tkinter.html&quot; target=&quot;_blank&quot;&gt;https://docs.python.org/ko/3/library/tkinter.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tkinter&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tk&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_widgets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_widgets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hi_there&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hi_there&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(click me)&quot;&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hi_there&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say_hi&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hi_there&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;top&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;QUIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                              &lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;destroy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bottom&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hi there, everyone!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mainloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="Python" /><category term="Tkinter" /><summary type="html">Tkinter 란? 파이썬으로 데스크톱 UI를 표현할 수 있다.</summary></entry></feed>
+9장 편리한 외부 서비스&lt;/p&gt;</content><author><name></name></author><category term="Book" /><category term="Web" /><summary type="html"></summary></entry></feed>
