@@ -6,17 +6,19 @@
 
   <link rel="shortcut icon" href="https://laerdream.github.io/assets/imgs/favicon.png">
   <link rel="icon" href="https://laerdream.github.io/assets/imgs/favicon.png"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>네오플랫 | 취미과다 인간의 탐구생활</title>
+<title>[ Linux ] VIM 명령어 | 네오플랫</title>
 <meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="네오플랫" />
+<meta property="og:title" content="[ Linux ] VIM 명령어" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="취미과다 인간의 탐구생활" />
-<meta property="og:description" content="취미과다 인간의 탐구생활" />
-<link rel="canonical" href="http://localhost:4000/tag/Linux/" />
-<meta property="og:url" content="http://localhost:4000/tag/Linux/" />
+<meta name="description" content="VIM 사용하면서 느낀 VIM 명령어 업데이트 이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다." />
+<meta property="og:description" content="VIM 사용하면서 느낀 VIM 명령어 업데이트 이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다." />
+<link rel="canonical" href="http://localhost:4000/article/linux/2020/02/08/vimshortcut/" />
+<meta property="og:url" content="http://localhost:4000/article/linux/2020/02/08/vimshortcut/" />
 <meta property="og:site_name" content="네오플랫" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-08T13:00:00+09:00" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/tag/Linux/","headline":"네오플랫","description":"취미과다 인간의 탐구생활","@type":"WebPage","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/article/linux/2020/02/08/vimshortcut/","headline":"[ Linux ] VIM 명령어","dateModified":"2020-02-08T13:00:00+09:00","datePublished":"2020-02-08T13:00:00+09:00","description":"VIM 사용하면서 느낀 VIM 명령어 업데이트 이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/article/linux/2020/02/08/vimshortcut/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="네오플랫" /></head>
 
@@ -236,134 +238,170 @@
         </div>
     </div>
 </div><main class="page-content" aria-label="Content">
-        <!--
-<ul class="posts-list">
+        <style>
+.visual-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+.visual-wrap .visual {
+  width: 100%;
+  height: 400px;
+  background-color: #EEE;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px);
+  opacity: 0.3;
+  opacity: 1;
+  background-size: 200%;
+  z-index: 997;
+}
+.visual-wrap .visual-cover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.visual-wrap .title {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+  color: #FFF;
+  height: 400px;
+  display: table;
+}
+.visual-wrap .post-header {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  vertical-align: middle;
+  word-break: keep-all;
+  padding: 0px 30px;
+  margin: 0px;
+}
+</style>
 
-  
+<meta property="og:url" content="https://laerdream.github.io" />
+<meta property="og:title" content="[ Linux ] VIM 명령어" />
+<meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/vim.jpg" />
+<meta property="og:description" content="네오플랫 | 취미과다 인간의 탐구생활" />
+<meta property="og:type" content="article" />
 
-  <h2>4건의 게시물</h2>
-
-  
-    <li>
-      <h3>
-        <a href="/article/linux/2020/02/08/vimshortcut/">
-          [ Linux ] VIM 명령어
-        </a>
-        <small>08 Feb 2020</small>
-      </h3>
-    </li>
-  
-    <li>
-      <h3>
-        <a href="/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/">
-          [ Linux ] 표준시간 GMT, UTC, KST, JST
-        </a>
-        <small>28 Nov 2019</small>
-      </h3>
-    </li>
-  
-    <li>
-      <h3>
-        <a href="/article/linux/2019/10/30/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%8B%9C%EA%B0%84%ED%99%95%EC%9D%B8/">
-          [ Linux ] 리눅스 시간대 확인
-        </a>
-        <small>30 Oct 2019</small>
-      </h3>
-    </li>
-  
-    <li>
-      <h3>
-        <a href="/article/linux/2019/10/30/%EC%9A%B0%EB%B6%84%ED%88%AC-%ED%95%9C%EA%B8%80%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%B9%98/">
-          [ Linux ] 우분투 한글폰트 설치
-        </a>
-        <small>30 Oct 2019</small>
-      </h3>
-    </li>
-  
-
-</ul> -->
-
-<div class="wrapper">
-  <div class="home content">
-      <ul class="post-list">
-        
-
-        <h2>4건의 게시물</h2>
-
-        
-
-        <li>
-            <a class="post-link" href="/article/linux/2020/02/08/vimshortcut/">
-                <div class="post-cover" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/vim.jpg')"></div>
-                <span class="post-meta">Feb 8, 2020</span>
-                <h4><a href="/tag/Linux">
-                    <span class="tag">
-                    # Linux
-                    </span>
-                  </a></h4>
-                <h3>
-                  <a class="post-link" href="/article/linux/2020/02/08/vimshortcut/">
-                    [ Linux ] VIM 명령어
-                  </a>
-                </h3>
-            </a>
-        </li>
-
-        <li>
-            <a class="post-link" href="/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/">
-                <div class="post-cover" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/linux.jpg')"></div>
-                <span class="post-meta">Nov 28, 2019</span>
-                <h4><a href="/tag/Linux">
-                    <span class="tag">
-                    # Linux
-                    </span>
-                  </a></h4>
-                <h3>
-                  <a class="post-link" href="/article/linux/2019/11/28/%ED%91%9C%EC%A4%80%EC%8B%9C%EA%B0%84/">
-                    [ Linux ] 표준시간 GMT, UTC, KST, JST
-                  </a>
-                </h3>
-            </a>
-        </li>
-
-        <li>
-            <a class="post-link" href="/article/linux/2019/10/30/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%8B%9C%EA%B0%84%ED%99%95%EC%9D%B8/">
-                <div class="post-cover" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/linux.jpg')"></div>
-                <span class="post-meta">Oct 30, 2019</span>
-                <h4><a href="/tag/Linux">
-                    <span class="tag">
-                    # Linux
-                    </span>
-                  </a></h4>
-                <h3>
-                  <a class="post-link" href="/article/linux/2019/10/30/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%8B%9C%EA%B0%84%ED%99%95%EC%9D%B8/">
-                    [ Linux ] 리눅스 시간대 확인
-                  </a>
-                </h3>
-            </a>
-        </li>
-
-        <li>
-            <a class="post-link" href="/article/linux/2019/10/30/%EC%9A%B0%EB%B6%84%ED%88%AC-%ED%95%9C%EA%B8%80%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%B9%98/">
-                <div class="post-cover" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/ubuntu.jpg')"></div>
-                <span class="post-meta">Oct 30, 2019</span>
-                <h4><a href="/tag/Ubuntu">
-                    <span class="tag">
-                    # Ubuntu
-                    </span>
-                  </a><a href="/tag/Linux">
-                    <span class="tag">
-                    # Linux
-                    </span>
-                  </a></h4>
-                <h3>
-                  <a class="post-link" href="/article/linux/2019/10/30/%EC%9A%B0%EB%B6%84%ED%88%AC-%ED%95%9C%EA%B8%80%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%B9%98/">
-                    [ Linux ] 우분투 한글폰트 설치
-                  </a>
-                </h3>
-            </a>
-        </li></ul>
+<div class="visual-wrap">
+  <div class="title">
+    <div class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">[ Linux ] VIM 명령어</h1>
+      <p class="post-meta">
+        <time class="dt-published" datetime="2020-02-08T13:00:00+09:00" itemprop="datePublished">
+          Feb 8, 2020
+        </time>
+    </div>
   </div>
+  <div class="visual-cover"></div>
+  <div class="visual" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/cover/vim.jpg')"></div>
+</div>
+<div class="wrapper">
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <div id="table-of-contents">
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#vim">VIM</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#제어">제어</a></li>
+<li class="toc-entry toc-h3"><a href="#보기">보기</a></li>
+<li class="toc-entry toc-h3"><a href="#선택">선택</a></li>
+<li class="toc-entry toc-h3"><a href="#이동">이동</a></li>
+<li class="toc-entry toc-h3"><a href="#복사">복사</a></li>
+<li class="toc-entry toc-h3"><a href="#삭제">삭제</a></li>
+<li class="toc-entry toc-h3"><a href="#입력">입력</a></li>
+<li class="toc-entry toc-h3"><a href="#검색">검색</a></li>
+<li class="toc-entry toc-h3"><a href="#교체">교체</a></li>
+</ul>
+</li>
+</ul>
+    </div>
+    <div class="post-content e-content" itemprop="articleBody">
+      <h2 id="vim">VIM</h2>
+<p>사용하면서 느낀 VIM 명령어 업데이트
+이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다.</p>
+
+<h3 id="제어">제어</h3>
+<p><code class="highlighter-rouge">:set nu 라인 번호 보기</code><br />
+<code class="highlighter-rouge">u 취소</code></p>
+
+<h3 id="보기">보기</h3>
+<p><code class="highlighter-rouge">zc 코드 접기</code><br />
+<code class="highlighter-rouge">zo 코드 열기</code><br />
+<code class="highlighter-rouge">zR 코드 전체 열기</code><br />
+<code class="highlighter-rouge">zM 코드 전체 접기</code></p>
+
+<h3 id="선택">선택</h3>
+<p><code class="highlighter-rouge">V 한줄 선택</code></p>
+
+<h3 id="이동">이동</h3>
+<p><code class="highlighter-rouge">h j k l 방향이동</code><br />
+<code class="highlighter-rouge">- 이전행의 처음으로 이동</code><br />
+<code class="highlighter-rouge">+ 다음행의 처음으로 이동</code><br />
+<code class="highlighter-rouge">^ 현재 행의 맨 앞으로 이동</code><br />
+<code class="highlighter-rouge">$ 현재 행의 맨 끝으로 이동</code><br />
+<code class="highlighter-rouge">( ) 문장 이동</code><br />
+<code class="highlighter-rouge">{ } 단락 이동</code><br />
+<code class="highlighter-rouge">gg 문서 맨 앞</code><br />
+<code class="highlighter-rouge">G 문서 맨 뒤</code><br />
+<code class="highlighter-rouge">라인번호 -&gt; 쉬프트+G 라인이동</code><br />
+<code class="highlighter-rouge">H 맨위, M 중간 L 마지막 / 쉬프트 + 위아래</code><br />
+<code class="highlighter-rouge">W or w 다음 단어</code><br />
+<code class="highlighter-rouge">B or b 이전 단어</code><br />
+<code class="highlighter-rouge">E or e 단어의 마지막</code><br />
+<code class="highlighter-rouge">% 짝 괄호 이동</code><br />
+<code class="highlighter-rouge">컨트롤 + d / 컨트롤 + u , 컨트롤 + f / 컨트롤 + b 스크롤</code></p>
+
+<h3 id="복사">복사</h3>
+<p><code class="highlighter-rouge">yy 현재줄 복사하기</code><br />
+<code class="highlighter-rouge">y / p 복사 / 붙여넣기</code></p>
+
+<h3 id="삭제">삭제</h3>
+<p><code class="highlighter-rouge">x 한글자 삭제</code><br />
+<code class="highlighter-rouge">X 앞글자 삭제</code><br />
+<code class="highlighter-rouge">dd 한줄 삭제</code><br />
+<code class="highlighter-rouge">dG 현재 줄부터 마지막 줄 까지 삭제</code><br />
+<code class="highlighter-rouge">dw 전진 삭제</code></p>
+
+<h3 id="입력">입력</h3>
+<p><code class="highlighter-rouge">i a o / I A O</code><br /></p>
+
+<h3 id="검색">검색</h3>
+<p><code class="highlighter-rouge">/타이핑 -&gt; n 다음단어 , N 이전단어 글자 찾기</code></p>
+
+<h3 id="교체">교체</h3>
+<p><code class="highlighter-rouge">r 문자교체</code></p>
+
+    </div><div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+      this.page.url = 'http://localhost:4000/article/linux/2020/02/08/vimshortcut/';
+      this.page.identifier = 'http://localhost:4000/article/linux/2020/02/08/vimshortcut/';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://laerdream-github-io.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><a class="u-url" href="/article/linux/2020/02/08/vimshortcut/" hidden></a>
+  </article>
 </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>

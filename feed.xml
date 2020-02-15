@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-08T13:09:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">네오플랫</title><subtitle>취미과다 인간의 탐구생활</subtitle><entry><title type="html">[ AWS ] https 프로토콜을 위한 SSL 인증서 발급</title><link href="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" rel="alternate" type="text/html" title="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" /><published>2020-01-04T11:55:00+09:00</published><updated>2020-01-04T11:55:00+09:00</updated><id>http://localhost:4000/article/aws/2020/01/04/AWS-https%20%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84%20%EC%9C%84%ED%95%9C%20SSL%20%EC%9D%B8%EC%A6%9D%EC%84%9C%20%EB%B0%9C%ED%96%89</id><content type="html" xml:base="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/">&lt;h2 id=&quot;certificat-manager-를-통한-인증서-발급&quot;&gt;Certificat Manager 를 통한 인증서 발급&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-15T10:56:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">네오플랫</title><subtitle>취미과다 인간의 탐구생활</subtitle><entry><title type="html">[ Linux ] VIM 명령어</title><link href="http://localhost:4000/article/linux/2020/02/08/vimshortcut/" rel="alternate" type="text/html" title="[ Linux ] VIM 명령어" /><published>2020-02-08T13:00:00+09:00</published><updated>2020-02-08T13:00:00+09:00</updated><id>http://localhost:4000/article/linux/2020/02/08/vimshortcut</id><content type="html" xml:base="http://localhost:4000/article/linux/2020/02/08/vimshortcut/">&lt;h2 id=&quot;vim&quot;&gt;VIM&lt;/h2&gt;
+&lt;p&gt;사용하면서 느낀 VIM 명령어 업데이트
+이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;제어&quot;&gt;제어&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:set nu 라인 번호 보기&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;u 취소&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;보기&quot;&gt;보기&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;zc 코드 접기&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;zo 코드 열기&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;zR 코드 전체 열기&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;zM 코드 전체 접기&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;선택&quot;&gt;선택&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;V 한줄 선택&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;이동&quot;&gt;이동&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;h j k l 방향이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;- 이전행의 처음으로 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;+ 다음행의 처음으로 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;^ 현재 행의 맨 앞으로 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ 현재 행의 맨 끝으로 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;( ) 문장 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;{ } 단락 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;gg 문서 맨 앞&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;G 문서 맨 뒤&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;라인번호 -&amp;gt; 쉬프트+G 라인이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;H 맨위, M 중간 L 마지막 / 쉬프트 + 위아래&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;W or w 다음 단어&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;B or b 이전 단어&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;E or e 단어의 마지막&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;% 짝 괄호 이동&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;컨트롤 + d / 컨트롤 + u , 컨트롤 + f / 컨트롤 + b 스크롤&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;복사&quot;&gt;복사&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yy 현재줄 복사하기&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;y / p 복사 / 붙여넣기&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;삭제&quot;&gt;삭제&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x 한글자 삭제&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;X 앞글자 삭제&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;dd 한줄 삭제&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;dG 현재 줄부터 마지막 줄 까지 삭제&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;dw 전진 삭제&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;입력&quot;&gt;입력&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;i a o / I A O&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;검색&quot;&gt;검색&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/타이핑 -&amp;gt; n 다음단어 , N 이전단어 글자 찾기&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;교체&quot;&gt;교체&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;r 문자교체&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><category term="Linux" /><summary type="html">VIM 사용하면서 느낀 VIM 명령어 업데이트 이 문서는 사용하면서 점점 업데이트 될 것이고 우선은 손에 익는대로 계속 써나갈 생각이다.</summary></entry><entry><title type="html">[ AWS ] https 프로토콜을 위한 SSL 인증서 발급</title><link href="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/" rel="alternate" type="text/html" title="[ AWS ] https 프로토콜을 위한 SSL 인증서 발급" /><published>2020-01-04T11:55:00+09:00</published><updated>2020-01-04T11:55:00+09:00</updated><id>http://localhost:4000/article/aws/2020/01/04/AWS-https%20%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84%20%EC%9C%84%ED%95%9C%20SSL%20%EC%9D%B8%EC%A6%9D%EC%84%9C%20%EB%B0%9C%ED%96%89</id><content type="html" xml:base="http://localhost:4000/article/aws/2020/01/04/AWS-https-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%84-%EC%9C%84%ED%95%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%ED%96%89/">&lt;h2 id=&quot;certificat-manager-를-통한-인증서-발급&quot;&gt;Certificat Manager 를 통한 인증서 발급&lt;/h2&gt;
 
 &lt;p&gt;AWS 서비스중 Certificate Manager 라는 서비스를 제공한다.&lt;/p&gt;
 
@@ -692,37 +745,4 @@ UDP, TCP 포트번호 53번에서 유래하였다고도 한다. 그냥 DNS라고
 
 &lt;h3 id=&quot;a-record&quot;&gt;A Record&lt;/h3&gt;
 &lt;p&gt;Address Record 라고 하며 도메인이름에 IP주소를 매핑시킬 때 사용한다.
-google.com =&amp;gt; 216.58.197.142 (IPv4 경우)&lt;/p&gt;</content><author><name></name></author><category term="AWS" /><summary type="html"></summary></entry><entry><title type="html">[ 웹 ] 웹 엔지니어의 교과서</title><link href="http://localhost:4000/article/book/2019/11/22/%EC%9B%B9%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EC%9D%98%EA%B5%90%EA%B3%BC%EC%84%9C/" rel="alternate" type="text/html" title="[ 웹 ] 웹 엔지니어의 교과서" /><published>2019-11-22T11:59:00+09:00</published><updated>2019-11-22T11:59:00+09:00</updated><id>http://localhost:4000/article/book/2019/11/22/%EC%9B%B9%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EC%9D%98%EA%B5%90%EA%B3%BC%EC%84%9C</id><content type="html" xml:base="http://localhost:4000/article/book/2019/11/22/%EC%9B%B9%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EC%9D%98%EA%B5%90%EA%B3%BC%EC%84%9C/">&lt;p&gt;&lt;img src=&quot;https://s3.ap-northeast-2.amazonaws.com/laerdream.github.io/2019-11-24/k232434397_1.jpg&quot; alt=&quot;웹 엔지니어의 교과서&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;저자&quot;&gt;저자&lt;/h2&gt;
-&lt;p&gt;사사키 타츠야 / 세가와 유스케 / 나이토 켄지 / 옮긴이 김성재&lt;/p&gt;
-
-&lt;p&gt;히토미디어 hitomedia.jp&lt;/p&gt;
-
-&lt;p&gt;교육 분야를 메인으로 한 인큐베이션 사업
-투자자와 제휴 파트너의 신규 사업 시작, 자금 조달, 인재 공급, 해외 제휴 등
-2014년 11월부터는 기업자 육성에 힘을 쏟아 이노베이션 살롱 hitomedia “the p@rk” 운영 시작&lt;/p&gt;
-
-&lt;h2 id=&quot;출판&quot;&gt;출판&lt;/h2&gt;
-&lt;p&gt;길벗 / 서울시 마포구 월드컵로 10길 56(서교동) / 02)332-0931
-2015년 12월 23일 초판 발행&lt;/p&gt;
-
-&lt;h2 id=&quot;감상&quot;&gt;감상&lt;/h2&gt;
-
-&lt;p&gt;길벗 책은 여백이 깔끔하고 이미지가 시원시원한 구성이 많은편이다.&lt;/p&gt;
-
-&lt;p&gt;아무래도 일서를 번역한 책이다 보니 크기 자체가 작은편이다.&lt;/p&gt;
-
-&lt;p&gt;가지고 다니기 가볍고 부담이 없어서 이동하면서 쉽게 읽었다.&lt;/p&gt;
-
-&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
-
-&lt;p&gt;1장 웹 엔지니어
-2장 Ruby on Rails 개발
-3장 PHP 개발
-4장 NoSQL 데이터베이스
-5장 프런트 엔드 구현
-6장 로그
-7장 데이터 시각화
-8장 환경 구축 자동화
-9장 편리한 외부 서비스&lt;/p&gt;</content><author><name></name></author><category term="Book" /><category term="Web" /><summary type="html"></summary></entry></feed>
+google.com =&amp;gt; 216.58.197.142 (IPv4 경우)&lt;/p&gt;</content><author><name></name></author><category term="AWS" /><summary type="html"></summary></entry></feed>
